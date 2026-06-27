@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}UFR STA{% endblock %}</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <i class="fas fa-envelope"></i> directeur-ufrsta@uam.edu.sn
+            </div>
+            <div class="top-bar-right">
+                <a href="contact.html" class="contact-btn">Nous Contacter</a>
+            </div>
+        </div>
+
+        <nav class="main-nav">
+            <div class="logo-container">
+                <img src="static/images/logo.jpeg" alt="Logo UFR STA" class="logo">
+                <div class="logo-text">
+                    <span class="ufr-acronym">UFR STA</span>
+                    <span class="ufr-full-name">Sciences et Technologies Avancées</span>
+                </div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                
+                <li class="dropdown">
+                    <a href="departements.html">Départements <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="departements.html#mim">MIM (Mathématiques, Informatique, Modélisation)</a></li>
+                        <li><a href="departements.html#smu">SMU (Sciences de la Matière et de l'Univers)</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="formations.html">Formations <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="formations.html#mpi">Filière MPI</a></li>
+                        <li><a href="formations.html#sml">Filière SML</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="actualites.html">Actualités</a></li>
+                <li><a href="activites.html">Activités</a></li>
+                <li><a href="galerie.html">Galerie</a></li>
+            </ul>
+
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+</body>
+</html>
