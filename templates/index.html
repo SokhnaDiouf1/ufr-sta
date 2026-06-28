@@ -39,4 +39,90 @@
     </div>
 
 </section>
+
+<section class="presentation-section">
+    <div class="titre-container">
+        <h2 class="titre-principal">Présentation</h2>
+        <div class="ligne-deco"></div>
+    </div>
+    
+    <div class="presentation-container">
+        <div class="presentation-gauche">
+            <div class="ufr-titre-bloc">
+                <h3>UFR STA</h3>
+                <span class="sous-titre-historique">Historique</span>
+            </div>
+            <img src="static/images/presentation.jpeg" alt=" UFR STA" class="petite-photo">
+        </div>
+
+        <div class="presentation-droite">
+            <p>Bla-bla-bla... L'Unité de Formation et de Recherche en Sciences et Technologies Avancées (UFR STA) est un pôle d'excellence dédié à l'innovation.</p>
+            <p>Bla-bla-bla... Notre mission est de former les leaders de demain dans les domaines scientifiques et technologiques en leur offering un cadre d'apprentissage moderne.</p>
+            
+            <a href="/activites" class="btn-activites">Découvrir nos activités</a>
+        </div>
+    </div>
+</section>
+
+<section class="chiffres-parallax">
+    <div class="chiffres-container">
+        <div class="chiffre-box">
+            <div class="chiffre-icone">
+                <i class="fas fa-user-graduate"></i>
+            </div>
+            <div class="chiffre-anim">
+                <span class="compteur" data-target="620">0</span>+
+            </div>
+            <p>Étudiants</p>
+        </div>
+        <div class="chiffre-box">
+            <div class="chiffre-icone">
+                <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+            <div class="chiffre-anim">
+                <span class="compteur" data-target="30">0</span>+
+            </div>
+            <p>Professeurs</p>
+        </div>
+        <div class="chiffre-box">
+            <div class="chiffre-icone">
+                <i class="fas fa-book"></i>
+            </div>
+            <div class="chiffre-anim">
+                <span class="compteur" data-target="3">0</span>+
+            </div>
+            <p>Filières</p>
+        </div>
+        <div class="chiffre-box">
+            <div class="chiffre-icone">
+                <i class="fas fa-microscope"></i>
+            </div>
+            <div class="chiffre-anim">
+                <span class="compteur" data-target="4">0</span>+
+            </div>
+            <p>Laboratoires</p>
+        </div>
+    </div>
+</section>
+
+<script>
+    const compteurs = document.querySelectorAll('.compteur');
+    const speed = 200; 
+
+    compteurs.forEach(compteur => {
+        const updateCount = () => {
+            const target = +compteur.getAttribute('data-target');
+            const count = +compteur.innerText;
+            const inc = target / speed;
+
+            if (count < target) {
+                compteur.innerText = Math.ceil(count + inc);
+                setTimeout(updateCount, 10);
+            } else {
+                compteur.innerText = target;
+            }
+        };
+        updateCount();
+    });
+</script>
 {% endblock %}

@@ -244,14 +244,14 @@ body {
 
 /* PHOTO 1 : Au milieu, tout à fait en haut */
 .slider-innovant .slide:nth-of-type(1) .texte-box {
-    top: 40px;                 /* Aligné vers le haut */
+    top: 15px;                 /* Aligné vers le haut */
     left: 50%;                 /* Centré horizontalement */
     transform: translateX(-50%); /* Ajustement pour un centrage parfait au milieu */
 }
 
 /* PHOTO 2 : À gauche, tout à fait en haut */
 .slider-innovant .slide:nth-of-type(2) .texte-box {
-    top: 40px;                 /* Aligné vers le haut */
+    top: 20px;                 /* Aligné vers le haut */
     left: 5%;                  /* Collé vers la gauche */
     transform: none;           /* Pas besoin de centrage */
 }
@@ -297,3 +297,154 @@ body {
 @keyframes glisseHaut { 0% { opacity: 0; transform: translateY(-80px); } 100% { opacity: 1; transform: translateY(0); } }
 @keyframes glisseBas { 0% { opacity: 0; transform: translateY(80px); } 100% { opacity: 1; transform: translateY(0); } }
 @keyframes zoomImage { 0% { opacity: 0; transform: scale(1.08); } 100% { opacity: 1; transform: scale(1); } }
+
+/* ==========================================================================
+   --- SECTION PRÉSENTATION ---
+   ========================================================================== */
+.presentation-section {
+    padding: 80px 5%;
+    background-color: #fafafa;
+}
+
+/* -- Le titre de la section bien marqué -- */
+.titre-container {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.titre-principal {
+    font-size: 42px;
+    color: #333333;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.ligne-deco {
+    width: 80px;
+    height: 5px;
+    background-color: var(--bleu-uam);
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+/* -- Structure Conteneur -- */
+.presentation-container {
+    display: flex;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 50px;
+}
+
+.presentation-gauche {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* -- Le bloc Titre + Sous-titre Historique en bas discret -- */
+.ufr-titre-bloc {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.presentation-gauche h3 {
+    font-size: 40px;
+    color: #222222;
+    font-weight: 800;
+    margin: 0;
+}
+
+.sous-titre-historique {
+    font-size: 15px;
+    color: #555555; 
+    font-weight: 400; /* Pas fonce / Pas en gras */
+    text-transform: capitalize;
+    margin-top: 2px;
+}
+
+.petite-photo {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.presentation-droite {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.presentation-droite p {
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* -- Le Bouton Marron -> Bleu -- */
+.btn-activites {
+    align-self: flex-start;
+    padding: 14px 30px;
+    background-color: rgba(106, 53, 31, 1);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.btn-activites:hover {
+    background-color: var(--bleu-uam);
+}
+
+/* ==========================================================================
+   --- SECTION CHIFFRES CLÉS (PARALLAX) ---
+   ========================================================================== */
+.chiffres-parallax {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/fond.jpeg');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    padding: 80px 0;
+    color: #ffffff;
+}
+
+.chiffres-container {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.chiffre-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style des icônes au-dessus des chiffres */
+.chiffre-icone {
+    font-size: 40px;
+    color: #ffffff;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.chiffre-anim {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.chiffre-box p {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #e0e0e0;
+}
