@@ -1,0 +1,299 @@
+/* --- 1. RÉINITIALISATION ET VARIABLES --- */
+:root {
+    --bleu-uam: #0088cc; /* Un bleu cyan technologique (à ajuster selon ton logo) */
+    --marron-uam: #8B4513; /* Marron terre/cuivré */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f4f9; /* Un fond légèrement gris pour faire ressortir le header blanc */
+}
+
+/* --- 2. BARRE SUPÉRIEURE (BLEUE) --- */
+/* --- 2. BARRE SUPÉRIEURE (BLEUE) --- */
+.top-bar {
+    background-color: var(--bleu-uam);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Permet de bien centrer le texte et les icônes verticalement */
+    padding: 15px 50px; /* J'ai remplacé 10px par 15px pour élargir la hauteur de la barre */
+    font-size: 14px;
+}
+
+.top-bar a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Animation fluide pour le changement de couleur */
+}
+
+/* Alignement gauche : Réseaux sociaux + Mail */
+.top-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Sépare le bloc réseaux sociaux du mail */
+}
+
+.social-icons a {
+    margin-right: 12px;
+    font-size: 15px;
+}
+
+.top-email i {
+    margin-right: 8px;
+}
+
+/* Le texte devient marron UAM quand on passe la souris */
+.social-icons a:hover, 
+.top-email:hover, 
+.top-bar-right a:hover {
+    color: var(--marron-uam);
+}
+
+/* Alignement droite et barre verticale */
+.top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espace autour de la barre verticale */
+}
+
+.separator {
+    color: rgba(255, 255, 255, 0.5); /* Rend la barre un peu transparente pour faire joli */
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.contact-btn {
+    font-weight: bold;
+}
+
+/* --- 3. NAVIGATION PRINCIPALE (BLANCHE) --- */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Petite ombre légère en dessous */
+}
+
+/* Logo et textes */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    height: 60px; /* Taille du logo */
+    width: auto;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.ufr-acronym {
+    font-weight: bold;
+    color: var(--bleu-uam);
+    font-size: 20px;
+}
+
+.ufr-full-name {
+    font-size: 13px;
+    color: var(--marron-uam);
+    font-weight: 500;
+}
+
+/* --- 4. LES LIENS DU MENU --- */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links > li {
+    position: relative; /* Important pour placer le sous-menu en dessous */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--bleu-uam);
+}
+
+/* --- 5. MENUS DÉROULANTS (MAGIE DU SURVOL) --- */
+.dropdown-menu {
+    display: none; /* Caché par défaut */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    list-style: none;
+    min-width: 250px; /* Largeur de la boîte déroulante */
+    z-index: 1000;
+    border-top: 3px solid var(--bleu-uam);
+}
+
+/* Afficher le sous-menu quand on survole le parent (Départements ou Formations) */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 12px 15px;
+    font-weight: 500;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f9f9f9;
+    color: var(--marron-uam); /* Le texte devient marron au survol */
+    padding-left: 20px; /* Petit effet de décalage stylé */
+}
+
+/* --- 6. ICÔNE RECHERCHE --- */
+.search-icon i {
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+}
+
+.search-icon i:hover {
+    color: var(--bleu-uam);
+}
+
+/* ==========================================================================
+   --- HERO SLIDER COMPLET (Carré Marron + Barre Bleue + Image pleine) ---
+   ========================================================================== */
+
+.slider-innovant {
+    position: relative;
+    width: 100%;
+    height: 600px; /* Hauteur du slider */
+    overflow: hidden;
+    background-color: #111;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* -- PHOTOS EN ARRIÈRE-PLAN PLEIN ÉCRAN -- */
+.image-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* -- LE CARRÉ MARRON INVISIBLE/TRANSPARENT AVEC LA BARRE BLEUE -- */
+.texte-box {
+    position: absolute;
+    width: 45%;
+    background-color: rgba(106, 53, 31, 0.85); /* Marron transparent */
+    border-left: 6px solid var(--bleu-uam); /* Barre bleue */
+    padding: 40px 45px;
+    border-radius: 4px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* --------------------------------------------------------------------------
+   --- POSITIONS UNIQUES POUR CHAQUE SLIDE ---
+   -------------------------------------------------------------------------- */
+
+/* PHOTO 1 : Au milieu, tout à fait en haut */
+.slider-innovant .slide:nth-of-type(1) .texte-box {
+    top: 40px;                 /* Aligné vers le haut */
+    left: 50%;                 /* Centré horizontalement */
+    transform: translateX(-50%); /* Ajustement pour un centrage parfait au milieu */
+}
+
+/* PHOTO 2 : À gauche, tout à fait en haut */
+.slider-innovant .slide:nth-of-type(2) .texte-box {
+    top: 40px;                 /* Aligné vers le haut */
+    left: 5%;                  /* Collé vers la gauche */
+    transform: none;           /* Pas besoin de centrage */
+}
+
+/* PHOTO 3 : À gauche au milieu (Ta position actuelle qui te va) */
+.slider-innovant .slide:nth-of-type(3) .texte-box {
+    top: 50%;                  /* Centré verticalement */
+    left: 8%;                  /* Décalé du bord gauche */
+    transform: translateY(-50%); /* Ajustement pour le centrage vertical */
+}
+
+/* Textes en blanc pour ressortir sur le marron */
+.texte-box h2 {
+    font-size: 48px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.texte-box h3 {
+    font-size: 22px;
+    color: #f1f1f1;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.texte-box p {
+    font-size: 16px;
+    color: #e2e2e2;
+    line-height: 1.6;
+}
+
+/* --- ANIMATIONS --- */
+.anim-gauche, .anim-droite, .anim-haut, .anim-bas, .anim-zoom { opacity: 0; }
+.slide.active .anim-gauche { animation: glisseGauche 0.8s forwards; }
+.slide.active .anim-droite { animation: glisseDroite 0.8s forwards; animation-delay: 0.3s; }
+.slide.active .anim-bas { animation: glisseBas 0.8s forwards; animation-delay: 0.4s; }
+.slide.active .anim-haut { animation: glisseHaut 0.8s forwards; }
+.slide.active .anim-zoom { animation: zoomImage 1.5s ease-out forwards; }
+
+@keyframes glisseGauche { 0% { opacity: 0; transform: translateX(-100px); } 100% { opacity: 1; transform: translateX(0); } }
+@keyframes glisseDroite { 0% { opacity: 0; transform: translateX(100px); } 100% { opacity: 1; transform: translateX(0); } }
+@keyframes glisseHaut { 0% { opacity: 0; transform: translateY(-80px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes glisseBas { 0% { opacity: 0; transform: translateY(80px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes zoomImage { 0% { opacity: 0; transform: scale(1.08); } 100% { opacity: 1; transform: scale(1); } }

@@ -14,9 +14,19 @@
     <header class="site-header">
         <div class="top-bar">
             <div class="top-bar-left">
-                <i class="fas fa-envelope"></i> directeur-ufrsta@uam.edu.sn
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <a href="mailto:contact.ufrsta@uam.edu.sn" class="top-email">
+                    <i class="fas fa-envelope"></i> directeur-ufrsta@uam.edu.sn
+                </a>
             </div>
             <div class="top-bar-right">
+                <a href="#" class="top-link">Entreprises</a>
+                <span class="separator">|</span>
                 <a href="contact.html" class="contact-btn">Nous Contacter</a>
             </div>
         </div>
@@ -64,6 +74,38 @@
         {% block content %}
         {% endblock %}
     </main>
+
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(index) {
+            // Enlève l'active partout
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Gère les limites
+            if (index >= slides.length) currentSlideIndex = 0;
+            else if (index < 0) currentSlideIndex = slides.length - 1;
+            else currentSlideIndex = index;
+            
+            // Ajoute l'active sur la bonne slide
+            slides[currentSlideIndex].classList.add('active');
+            dots[currentSlideIndex].classList.add('active');
+        }
+
+        function changeSlide(n) {
+            showSlide(currentSlideIndex + n);
+        }
+
+        function currentSlide(n) {
+            showSlide(n);
+        }
+
+        // Changement toutes les 6 secondes
+        setInterval(() => changeSlide(1), 6000);
+    </script>
 
 </body>
 </html>
