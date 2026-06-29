@@ -448,3 +448,263 @@ body {
     letter-spacing: 1px;
     color: #e0e0e0;
 }
+
+/* ==========================================================================
+   --- SECTION MOT DU DIRECTEUR (VERSION FINALE STYLÉE) ---
+   ========================================================================== */
+.mot-directeur-section {
+    padding: 80px 5%;
+    background-color: #ffffff; /* Fond blanc pur pour la cohérence */
+}
+
+/* Le titre réutilise les classes .titre-container, .titre-principal et .ligne-deco 
+   déjà définies dans la section Présentation, donc pas besoin de les recréer ! */
+
+.mot-directeur-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 60px;
+    align-items: center;
+}
+
+/* -- Côté Photo -- */
+.directeur-photo {
+    flex: 1.2;
+    max-width: 480px;
+}
+
+.directeur-photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* -- Côté Texte -- */
+.directeur-texte {
+    flex: 2;
+}
+
+/* -- LE CADRE MARRON POUR LE NOM -- */
+.cadre-nom-directeur {
+    background-color: #6A351F; /* Le marron UAM */
+    display: inline-block; /* Pour que le cadre s'ajuste à la taille du nom */
+    padding: 10px 25px;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.cadre-nom-directeur h3 {
+    font-size: 22px;
+    color: #ffffff; /* Texte en blanc dans le cadre marron */
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.directeur-contenu p {
+    font-size: 16px;
+    color: #444444;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.directeur-contenu ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.directeur-contenu li {
+    font-size: 16px;
+    color: #444444;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+/* -- Responsive -- */
+@media (max-width: 992px) {
+    .mot-directeur-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .cadre-nom-directeur {
+        margin: 0 auto 30px;
+    }
+}
+
+/* ==========================================================================
+   --- SECTION ACTUALITÉS (DÉFILEMENT / CARROUSEL) ---
+   ========================================================================== */
+.actualites-section {
+    padding: 80px 5%;
+    background-color: #ffffff;
+}
+
+/* -- Titres -- */
+.titre-actualites-container {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.sur-titre {
+    display: block;
+    font-size: 16px;
+    color: #6A351F; /* Marron UAM comme tu l'as demandé */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.titre-actualites {
+    font-size: 42px;
+    color: #333333;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+/* -- Le Carrousel qui défile -- */
+.carousel-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden; /* Cache ce qui dépasse */
+}
+
+.actualites-carousel {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto; /* Permet de scroller horizontalement */
+    scroll-snap-type: x mandatory;
+    padding-bottom: 20px;
+    
+    /* Cache la barre de défilement pour faire plus propre */
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+}
+.actualites-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+/* -- Style de la Carte -- */
+.carte-actu {
+    background-color: #fafafa;
+    border-radius: 8px;
+    overflow: hidden;
+    flex: 0 0 calc(33.333% - 20px); /* Affiche 3 cartes à l'écran sur PC */
+    scroll-snap-align: start;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #eeeeee;
+}
+
+.carte-actu:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    border-color: var(--bleu-uam);
+}
+
+.carte-actu:hover .image-actu-wrapper img {
+    transform: scale(1.08); 
+}
+
+/* -- Image de la carte -- */
+.image-actu-wrapper {
+    height: 220px;
+    overflow: hidden;
+}
+
+.image-actu-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* -- Contenu de la carte -- */
+.contenu-actu {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.date-actu {
+    font-size: 13px;
+    color: #888888;
+    margin-bottom: 15px;
+}
+
+.contenu-actu h3 {
+    font-size: 18px;
+    color: #333333;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    min-height: 80px;
+    font-weight: 700;
+}
+
+/* -- Bas de la carte -- */
+.bas-de-carte {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eeeeee;
+    padding-top: 15px;
+    margin-top: auto;
+}
+
+.tag-actu {
+    font-size: 13px;
+    color: var(--bleu-uam);
+    font-weight: 600;
+}
+
+.lien-actu {
+    font-size: 13px;
+    color: #555555;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.lien-actu:hover {
+    color: var(--bleu-uam);
+}
+
+/* -- Bouton Global -- */
+.bouton-toute-actu-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.btn-toutes-actus {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: var(--bleu-uam);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    transition: background 0.3s;
+}
+
+.btn-toutes-actus:hover {
+    background-color: #6A351F; /* Marron UAM au survol */
+}
+
+/* -- Responsive -- */
+@media (max-width: 992px) {
+    .carte-actu {
+        flex: 0 0 calc(50% - 15px); /* 2 cartes sur tablette */
+    }
+}
+@media (max-width: 768px) {
+    .carte-actu {
+        flex: 0 0 100%; /* 1 carte sur téléphone */
+    }
+}
