@@ -10,9 +10,7 @@
     <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
-
-    <header class="site-header">
-        <div class="top-bar">
+    <div class="top-bar">
             <div class="top-bar-left">
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -31,6 +29,7 @@
             </div>
         </div>
 
+    <header class="main-nav">
         <nav class="main-nav">
             <div class="logo-container">
                 <img src="static/images/logo.jpeg" alt="Logo UFR STA" class="logo">
@@ -105,6 +104,113 @@
 
         // Changement toutes les 6 secondes
         setInterval(() => changeSlide(1), 6000);
+    </script>
+
+    <footer class="footer-sta">
+        <div class="footer-sta-container">
+            
+            <div class="footer-colonne brand-col">
+                <h3 class="footer-nom-ufr">UAM - UFR STA</h3>
+                <img src="static/images/logo1.jpeg" alt="Logo UAM" class="footer-logo">
+                <p class="footer-desc">
+                    Unité de Formation et de Recherche en Sciences et Technologies Avancées.
+                </p>
+                
+                <a href="https://www.google.com/maps/search/Universit%C3%A9+Amadou+Mahtar+Mbow+Diamniadio" target="_blank" class="lien-map">
+                    <i class="fas fa-map-marked-alt"></i> Voir sur Google Maps
+                </a>
+
+                <div class="footer-reseaux">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-colonne">
+                <h4 class="footer-titre">Accès Rapide</h4>
+                <ul class="footer-liens">
+                    <li><a href="/"><i class="fas fa-angle-right"></i> Présentation de l'UFR</a></li>
+                    <li><a href="#mot-directeur"><i class="fas fa-angle-right"></i> Mot du Directeur</a></li>
+                    <li><a href="/formations"><i class="fas fa-angle-right"></i> Nos formations</a></li>
+                    <li><a href="/enseignants"><i class="fas fa-angle-right"></i> Nos Enseignants</a></li>
+                    <li><a href="/activites"><i class="fas fa-angle-right"></i> Nos activités</a></li>
+                    <li><a href="/contact"><i class="fas fa-angle-right"></i> Nous contacter</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-colonne">
+                <h4 class="footer-titre">Liens Utiles</h4>
+                <ul class="footer-liens">
+                    <li><a href="https://uam.sn" target="_blank"><i class="fas fa-link"></i> UAM</a></li>
+                    <li><a href="https://mesr.gouv.sn" target="_blank"><i class="fas fa-link"></i> MESRI</a></li>
+                    <li><a href="https://www.directiondesbourses.sn" target="_blank"><i class="fas fa-link"></i> Direction des bourses</a></li>
+                    <li><a href="https://anaqsup.sn/acreditations/?_sf_s=UAM" target="_blank"><i class="fas fa-link"></i> Anaq-Sup</a></li>
+                    <li><a href="https://www.crousuam.sn" target="_blank"><i class="fas fa-link"></i> CROUS Diamniadio</a></li>
+                    <li><a href="https://erasmus-plus.ec.europa.eu" target="_blank"><i class="fas fa-link"></i> ERASMUS</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-colonne contact-col">
+                <h4 class="footer-titre">Nous joindre</h4>
+                <ul class="footer-contact-liste">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Campus UAM, Pôle Urbain de Diamniadio, Sénégal</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:directeur-ufrsta@uam.edu.sn">directeur-ufrsta@uam.edu.sn</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+221 33 800 00 00</span> </li>
+                    <li>
+                        <i class="far fa-clock"></i>
+                        <span>Lun - Ven : 08h00 - 17h00</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-copyright">
+            <p>&copy; 2026 UFR STA - Université Amadou Mahtar Mbow. Tous droits réservés.</p>
+        </div>
+    </footer>
+    <button id="btn-remonter" title="Remonter en haut">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        // On cible nos éléments
+        let boutonRemonter = document.getElementById("btn-remonter");
+        let header = document.querySelector("header");
+
+        window.onscroll = function() {
+            // 1. GESTION DU BOUTON REMONTER (Apparaît après 300px)
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                boutonRemonter.style.display = "block";
+            } else {
+                boutonRemonter.style.display = "none";
+            }
+
+            // 2. GESTION DE L'EFFET DU MENU (La classe 'scrolled' s'active dès qu'on dépasse la barre bleue)
+            if (window.scrollY > 40) { 
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        };
+
+        // Quand on clique sur le bouton, on remonte en douceur
+        boutonRemonter.addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
     </script>
 
 </body>

@@ -78,21 +78,47 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 50px;
-    background-color: white;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Petite ombre légère en dessous */
+    padding: 5px 50px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eef2f5;
 }
 
+/* --- LE HEADER DE BASE --- */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #ffffff; /* Important pour cacher le texte qui passe en dessous */
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+header.scrolled {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Ajoute la petite ombre de la vidéo */
+}
+
+/* On réduit un peu les marges de la barre blanche au scroll pour faire plus fin */
+header.scrolled .main-nav {
+    padding: 8px 50px; /* Au lieu de 15px */
+    transition: all 0.3s ease-in-out;
+}
+
+/* On réduit un peu le logo au scroll pour qu'il prenne moins de place */
+header.scrolled .logo {
+    height: 60px; /* Il passe de 115px à 80px en douceur */
+}
 /* Logo et textes */
 .logo-container {
     display: flex;
     align-items: center;
     gap: 15px;
+    margin-right: 50px;
 }
 
 .logo {
-    height: 60px; /* Taille du logo */
+    height: 90px; /* Taille du logo */
     width: auto;
+    transition: height 0.3s ease;
 }
 
 .logo-text {
@@ -110,13 +136,15 @@ body {
     font-size: 13px;
     color: var(--marron-uam);
     font-weight: 500;
+    max-width: 170px;
+    line-height: 1.3;
 }
 
 /* --- 4. LES LIENS DU MENU --- */
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 40px;
     align-items: center;
 }
 
@@ -135,6 +163,7 @@ body {
 .nav-links a:hover {
     color: var(--bleu-uam);
 }
+
 
 /* --- 5. MENUS DÉROULANTS (MAGIE DU SURVOL) --- */
 .dropdown-menu {
@@ -170,6 +199,9 @@ body {
 }
 
 /* --- 6. ICÔNE RECHERCHE --- */
+.search-icon {
+    margin-left: 30px;
+}
 .search-icon i {
     font-size: 18px;
     color: #333;
@@ -707,4 +739,232 @@ body {
     .carte-actu {
         flex: 0 0 100%; /* 1 carte sur téléphone */
     }
+}
+
+/* ==========================================================================
+   --- 5. FOOTER UFR STA (DESIGN AJUSTÉ) ---
+   ========================================================================== */
+.footer-sta {
+    background-color: #1e293b; /* Bleu nuit profond */
+    color: #e2e8f0;
+    padding: 70px 5% 20px 5%;
+    font-family: 'Arial', sans-serif;
+    border-top: 5px solid #6A351F; /* Ligne marron en haut du footer */
+}
+
+.footer-sta-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.footer-colonne {
+    flex: 1;
+    min-width: 220px;
+}
+
+/* -- Colonne 1 : Marque et Logo -- */
+.footer-logo {
+    max-width: 60px; /* Un peu plus grand */
+    margin-bottom: 15px;
+    display: block;
+    /* J'ai supprimé le fond blanc et les bordures ici ! */
+}
+
+.brand-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;    /* Centre le logo, le titre et les icônes horizontalement */
+    text-align: center;     /* Centre le texte de la description */
+}
+
+.footer-nom-ufr {
+    font-size: 20px; /* Plus grand */
+    color: #ffffff;
+    font-weight: 800;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.footer-desc {
+    font-size: 16px; /* Texte plus lisible */
+    line-height: 1.7;
+    color: #cbd5e1;
+    margin-bottom: 25px;
+}
+
+.lien-map {
+    display: inline-block;
+    background-color: #6A351F; /* Marron UAM */
+    color: #ffffff;
+    padding: 10px 18px; /* Bouton plus grand */
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 15px; /* Plus grand */
+    font-weight: bold;
+    margin-bottom: 25px;
+    transition: background-color 0.3s;
+}
+
+.lien-map:hover {
+    background-color: #8c472a; /* Marron plus clair au survol */
+}
+
+.lien-map i {
+    margin-right: 8px;
+}
+
+/* Réseaux sociaux */
+.footer-reseaux a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px; /* Boutons plus grands */
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff; /* Icônes en marron par défaut */
+    font-size: 18px; /* Icônes plus grandes */
+    border-radius: 50%;
+    margin-right: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-reseaux a:hover {
+    background-color: #6A351F; /* Devient fond marron au survol */
+    color: #ffffff; /* Icône devient blanche */
+    transform: translateY(-3px);
+}
+
+/* -- Colonnes 2 et 3 : Liens -- */
+.footer-titre {
+    font-size: 20px; /* Titres plus grands */
+    color: #ffffff;
+    margin-bottom: 25px;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-titre::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #6A351F; /* Trait marron */
+}
+
+.footer-liens {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-liens li {
+    margin-bottom: 15px; /* Plus d'espace entre les liens */
+}
+
+.footer-liens a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 16px; /* Textes des liens plus grands */
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.footer-liens a i {
+    font-size: 14px;
+    margin-right: 10px;
+    color: #6A351F; /* Les petites icônes en marron */
+    transition: transform 0.3s ease;
+}
+
+.footer-liens a:hover {
+    color: #6A351F; /* Le texte devient marron au survol */
+    padding-left: 8px; /* Se décale un peu plus */
+}
+
+/* -- Colonne 4 : Nous joindre -- */
+.footer-contact-liste {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-contact-liste li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 18px;
+    font-size: 16px; /* Texte plus grand */
+    color: #cbd5e1;
+    line-height: 1.6;
+}
+
+.footer-contact-liste li i {
+    color: #6A351F; /* Icônes contact en marron */
+    font-size: 20px; /* Icônes bien visibles */
+    margin-right: 12px;
+    margin-top: 2px;
+}
+
+.footer-contact-liste a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-contact-liste a:hover {
+    color: #6A351F; /* Devient marron au survol */
+}
+
+/* -- Copyright -- */
+.footer-copyright {
+    margin-top: 60px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    color: #f8fafc; /* Blanc très clair pour bien ressortir */
+    font-size: 16px; /* Bien plus grand et lisible */
+    font-weight: 500;
+}
+
+/* -- Responsive -- */
+@media (max-width: 768px) {
+    .footer-colonne {
+        flex: 100%;
+        margin-bottom: 30px;
+    }
+}
+
+/* ==========================================================================
+   --- BOUTON REMONTER (SCROLL TO TOP) ---
+   ========================================================================== */
+#btn-remonter {
+    display: none; /* Caché par défaut, le JavaScript l'affichera */
+    position: fixed; /* Reste bloqué à l'écran */
+    bottom: 40px; /* Distance par rapport au bas */
+    right: 40px; /* Distance par rapport à la droite */
+    z-index: 999;
+    background-color: #d9534f; /* La couleur rouge/orange de ta photo */
+    color: white;
+    border: none;
+    outline: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Rend le bouton parfaitement rond */
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#btn-remonter:hover {
+    background-color: #c9302c; /* Devient un peu plus foncé au survol */
+    transform: scale(1.1); /* Grossit très légèrement au survol */
 }
