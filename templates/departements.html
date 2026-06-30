@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Les Départements de l'UFR STA</h1>
+    <p>Découvrez nos pôles d'excellence d'enseignement et de recherche institutionnelle</p>
+</section>
+
+<main class="departments-container">
+    
+    <section class="dept-card">
+        <div class="dept-content">
+            <span class="dept-tag" id="mim">Pôle Modélisation & Numérique</span>
+            <h2>Département MIM</h2>
+            <h3>Mathématiques, Informatique et Modélisation</h3>
+            
+            <p class="dept-description">
+                Le département MIM forme des experts hautement qualifiés capables de répondre aux grands défis de la simulation numérique, de l'analyse de données et du développement informatique. Axé sur l'innovation technologique, il prépare les étudiants à concevoir les outils scientifiques de demain.
+            </p>
+            
+            <div class="dept-filiers">
+                <h4>Filières administrées par le département :</h4>
+                <div class="badges-container">
+                    <span class="filiere-badge">MPI (Mathématiques, Physique et Informatique)</span>
+                    <span class="filiere-badge">MIAS (Mathématiques, Informatique Appliquées aux Sciences Sociales)</span>
+                </div>
+            </div>
+            
+            <div class="dept-contact-card">
+                <div class="contact-info">
+                    <p class="contact-label">Responsable du Département</p>
+                    <p class="contact-name"><i class="fas fa-user-tie"></i> Dr. Amadou DIOP</p>
+                </div>
+                <div class="contact-info">
+                    <p class="contact-label">Contact Professionnel</p>
+                    <p class="contact-email"><i class="fas fa-envelope"></i> <a href="mailto:mim.sta@uam.edu.sn">mim.sta@uam.edu.sn</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="dept-image">
+            <div class="image-placeholder bg-mim">
+                <i class="fas fa-laptop-code"></i>
+            </div>
+        </div>
+    </section>
+
+    <section class="dept-card">
+        <div class="dept-content">
+            <span class="dept-tag" id="smu">Pôle Sciences Physiques & Environnement</span>
+            <h2>Département SMU</h2>
+            <h3>Sciences de la Matière et de l'Univers</h3>
+            
+            <p class="dept-description">
+                Le département SMU est dédié à l'exploration des lois fondamentales de la physique et à l'étude des systèmes marins et environnementaux. Nos programmes allient rigueur académique et travaux d'application pratiques pour former des professionnels capables de comprendre et d'agir sur les enjeux planétaires.
+            </p>
+            
+            <div class="dept-filiers">
+                <h4>Filières administrées par le département :</h4>
+                <div class="badges-container">
+                    <span class="filiere-badge">SML (Sciences de la Mer et du Littoral)</span>
+                    <span class="filiere-badge">PA (Physique et Applications)</span>
+                </div>
+            </div>
+            
+            <div class="dept-contact-card">
+                <div class="contact-info">
+                    <p class="contact-label">Responsable du Département</p>
+                    <p class="contact-name"><i class="fas fa-user-tie"></i> Dr. Fatou SOW</p>
+                </div>
+                <div class="contact-info">
+                    <p class="contact-label">Contact Professionnel</p>
+                    <p class="contact-email"><i class="fas fa-envelope"></i> <a href="mailto:smu.sta@uam.edu.sn">smu.sta@uam.edu.sn</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="dept-image">
+            <div class="image-placeholder bg-smu">
+                <i class="fas fa-globe-africa"></i>
+            </div>
+        </div>
+    </section>
+
+</main>
+{% endblock %}

@@ -40,15 +40,16 @@
             </div>
             
             <ul class="nav-links">
-                <li><a href="index.html">Accueil</a></li>
+                <li><a href="{{ url_for('accueil') }}">Accueil</a></li>
                 
                 <li class="dropdown">
-                    <a href="departements.html">Départements <i class="fas fa-chevron-down"></i></a>
+                    <a href="{{ url_for('departements') }}">Départements <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href="departements.html#mim">MIM (Mathématiques, Informatique, Modélisation)</a></li>
-                        <li><a href="departements.html#smu">SMU (Sciences de la Matière et de l'Univers)</a></li>
+                        <li><a href="{{ url_for('departements') }}#mim">MIM (Mathématiques, Informatique, Modélisation)</a></li>
+                        <li><a href="{{ url_for('departements') }}#smu">SMU (Sciences de la Matière et de l'Univers)</a></li>
                     </ul>
                 </li>
+
 
                 <li class="dropdown">
                     <a href="formations.html">Formations <i class="fas fa-chevron-down"></i></a>

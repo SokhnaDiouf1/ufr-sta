@@ -968,3 +968,213 @@ header.scrolled .logo {
     background-color: #c9302c; /* Devient un peu plus foncé au survol */
     transform: scale(1.1); /* Grossit très légèrement au survol */
 }
+
+/* ==========================================================================
+   PAGE DÉPARTEMENTS - DESIGN EN BLOCS ALTERNÉS
+   ========================================================================== */
+
+/* Bannière d'en-tête */
+.page-header {
+    background-color: var(--bleu-uam); /* Utilisation de ton bleu d'origine */
+    color: #ffffff;
+    text-align: center;
+    padding: 50px 20px;
+    margin-bottom: 50px;
+}
+
+.page-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.page-header p {
+    font-size: 16px;
+    opacity: 0.85;
+    font-weight: 300;
+}
+
+/* Conteneur principal */
+.departments-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 60px 20px;
+}
+
+/* Cartes de Département (Flexbox pour alignement horizontal) */
+.dept-card {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    margin-bottom: 50px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.dept-card:hover {
+    transform: translateY(-5px);
+}
+
+/* 🧠 LA MAGIE DE L'ALTERNANCE : Inverse le texte et l'image une fois sur deux */
+.dept-card:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* Zone du texte */
+.dept-content {
+    flex: 1.2;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dept-tag {
+    align-self: flex-start;
+    background-color: rgba(0, 114, 206, 0.08); /* Ton bleu légèrement transparent */
+    color: var(--bleu-uam);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+}
+
+.dept-card h2 {
+    font-size: 26px;
+    color: var(--bleu-uam);
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.dept-card h3 {
+    font-size: 15px;
+    color: var(--marron-uam); /* Utilisation de ton marron d'origine */
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.dept-description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* Badges pour les Filières (Limite propre avant la page formation) */
+.dept-filiers h4 {
+    font-size: 13.5px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.badges-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.filiere-badge {
+    background-color: #f5f7fa;
+    color: #4c5563;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 500;
+    border-left: 3px solid var(--marron-uam); /* Rappel subtil de ton marron */
+}
+
+/* Carte Encadrée des Responsables */
+.dept-contact-card {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-label {
+    font-size: 11px;
+    color: #718096;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+    font-weight: 500;
+}
+
+.contact-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a202c;
+}
+
+.contact-name i, .contact-email i {
+    color: var(--bleu-uam);
+    margin-right: 5px;
+}
+
+.contact-email a {
+    font-size: 14px;
+    color: var(--bleu-uam);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.contact-email a:hover {
+    text-decoration: underline;
+}
+
+/* Zone Image / Placeholders graphiques */
+.dept-image {
+    flex: 0.8;
+    min-height: 100%;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+}
+
+.bg-mim {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+}
+
+.bg-smu {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.image-placeholder i {
+    font-size: 60px;
+    color: rgba(255, 255, 255, 0.12);
+}
+
+/* RESPONSIVE DESIGN (Si on regarde sur smartphone ou petite tablette) */
+@media (max-width: 912px) {
+    .dept-card, .dept-card:nth-child(even) {
+        flex-direction: column;
+    }
+    .dept-image {
+        order: -1; /* Place l'image en haut sur mobile */
+    }
+    .image-placeholder {
+        min-height: 200px;
+    }
+    .dept-contact-card {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
