@@ -1332,7 +1332,7 @@ header.scrolled .logo {
 .spec-item summary {
     padding: 15px 20px;
     font-weight: 700;
-    color: var(--bleu-uam);
+    color: #000000;
     cursor: pointer;
     list-style: none; /* Enlève la petite flèche de base sur certains navigateurs */
     display: flex;
@@ -1359,9 +1359,11 @@ header.scrolled .logo {
 }
 
 .spec-content h5 {
-    color: #334155;
-    margin-top: 10px;
-    margin-bottom: 5px;
+    color: #1a1a1a;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 15px;
+    margin-bottom: 8px;
 }
 
 .spec-content ul {
@@ -1370,11 +1372,22 @@ header.scrolled .logo {
 }
 
 .spec-btn {
-    background-color: #475569; /* Gris foncé pour différencier de L1/L2 */
+    display: inline-block;
+    background-color: var(--bleu-uam);
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3;
+    cursor: pointer;
+    border: none;
 }
 
 .spec-btn:hover {
-    background-color: #334155;
+    background-color: var(--marron-uam);
+    color: #fff;
 }
 
 /* 6. Tableau des Admissions */
@@ -1416,4 +1429,286 @@ header.scrolled .logo {
 
 .ufr-table td strong {
     color: var(--marron-uam);
+}
+
+/* ==========================================================================
+   MIASS 
+   ========================================================================== */
+
+/* 1. Conteneur principal et Carte de la formation */
+.formations-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px 60px 20px;
+}
+
+.formation-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    padding: 40px;
+    margin-bottom: 50px;
+    border-top: 5px solid var(--marron-uam); /* Rappel de la couleur de l'UAM */
+}
+
+/* 2. En-tête et Badges (Niveau, Durée) */
+.formation-header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.formation-header h2 {
+    color: #1a1a1a;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.formation-badges {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.badge {
+    background-color: #f1f5f9;
+    color: #334155;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* 3. Textes et Objectifs */
+.formation-objective {
+    margin-bottom: 30px;
+    line-height: 1.7;
+    color: #444;
+}
+
+.formation-objective h3 {
+    color: #1a1a1a;
+    margin-bottom: 10px;
+}
+
+/* 4. Boutons PDF */
+.btn-admission-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: var(--marron-uam);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.btn-admission-link:hover {
+    background-color: #8b4513; /* Marron un peu plus foncé */
+}
+
+.tronc-commun-section {
+    margin-bottom: 30px;
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.tronc-commun-section h4 {
+    margin-bottom: 15px;
+    color: #1e293b;
+}
+
+.pdf-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-pdf {
+    display: inline-block;
+    background-color: var(--bleu-uam);
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.btn-pdf:hover {
+    background-color: var(--marron-uam);
+    color: #fff;
+}
+
+/* ==========================================================================
+   5. Système d'accordéon pour les spécialités L3 et Liens MIASS
+   ========================================================================== */
+.specialisations-section h4 {
+    color: #1a202c;
+    margin-bottom: 5px;
+}
+
+.instruction {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 15px;
+}
+
+.spec-accordion {
+    margin-top: 15px;
+}
+
+.spec-item {
+    background: #f8fafc;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+}
+
+/* Titres des licences forcés en noir */
+.spec-item summary {
+    padding: 15px 20px;
+    font-weight: 700;
+    color: #000000; 
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.spec-item summary::after {
+    content: "+";
+    font-size: 20px;
+    color: var(--marron-uam);
+}
+
+.spec-item[open] summary::after {
+    content: "-";
+}
+
+.spec-content {
+    padding: 20px;
+    background: white;
+    border-top: 1px solid #e2e8f0;
+    line-height: 1.6;
+}
+
+.spec-content h5 {
+    color: #1a1a1a;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 15px;
+    margin-bottom: 8px;
+}
+
+.spec-content ul {
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+/* Bouton S5/S6 aligné sur le style L1/L2 (Bleu -> Marron) */
+.spec-btn {
+    display: inline-block;
+    background-color: var(--bleu-uam);
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s; 
+    cursor: pointer;
+    border: none;
+}
+
+.spec-btn:hover {
+    background-color: var(--marron-uam); 
+    color: #fff;
+}
+
+/* Liens de redirection (MIASS vers MPI) */
+.spec-item-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8fafc; 
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    padding: 15px 20px;
+    font-weight: 700;
+    color: #000000; /* Texte en noir */
+    text-decoration: none; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.spec-item-link::after {
+    content: "↗"; 
+    font-size: 20px;
+    color: var(--marron-uam); 
+    font-weight: bold;
+}
+
+.spec-item-link:hover {
+    background-color: #f1f5f9;
+}
+
+/* ==========================================================================
+   6. Tableau des Admissions
+   ========================================================================== */
+.admissions-table-container {
+    margin-top: 60px;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.section-title {
+    color: var(--bleu-uam);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.ufr-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ufr-table th, .ufr-table td {
+    border: 1px solid #e2e8f0;
+    padding: 15px;
+    text-align: left;
+}
+
+.ufr-table th {
+    background-color: #f8fafc;
+    color: var(--bleu-uam);
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.ufr-table tr:nth-child(even) {
+    background-color: #fcfcfc;
+}
+
+.ufr-table td strong {
+    color: var(--marron-uam);
+}
+/* Animation pour indiquer à l'utilisateur où cliquer */
+@keyframes flashHighlight {
+    0% { background-color: #f8fafc; border-color: #e2e8f0; }
+    30% { background-color: #e0f2fe; border-color: var(--bleu-uam); box-shadow: 0 0 12px rgba(0, 0, 0, 0.15); }
+    100% { background-color: #f8fafc; border-color: #e2e8f0; }
+}
+
+.highlight-active {
+    animation: flashHighlight 2s ease-in-out;
 }

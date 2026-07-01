@@ -43,11 +43,17 @@
             <p class="instruction">Cliquez sur une spécialité pour voir les détails, les débouchés et la maquette.</p>
             
             <div class="spec-accordion">
-                <details class="spec-item">
+                <details class="spec-item" id="filiere-informatique">
                     <summary>Licence en Informatique</summary>
                     <div class="spec-content">
                         <h5>À propos de la Licence Info :</h5>
                         <p>Cette spécialisation met l'accent sur le génie logiciel, l'administration réseaux et la cybersécurité.</p>
+                        <h5>Poursuite d'études (Masters) :</h5>
+                        <ul>
+                            <li>Master en Génie Logiciel et Applications</li>
+                            <li>Master en Science des Données (Data Science)</li>
+                            <li>Master en Sécurité Informatique et Systèmes Réseaux</li>
+                        </ul>
                         <h5>Débouchés :</h5>
                         <ul>
                             <li>Développeur Full-Stack</li>
@@ -58,17 +64,24 @@
                     </div>
                 </details>
 
-                <details class="spec-item">
+                <details class="spec-item" id="filiere-mathematiques">
                     <summary>Licence en Mathématiques et Modélisation</summary>
                     <div class="spec-content">
                         <h5>À propos de la Licence Maths :</h5>
                         <p>Focus sur l'analyse, l'algèbre et la modélisation mathématique pour résoudre des problèmes complexes.</p>
+                        <h5>Poursuite d'études (Masters) :</h5>
+                        <ul>
+                            <li>Master en Mathématiques Appliquées et Statistique</li>
+                            <li>Master en Modélisation, Simulation et Calcul Scientifique</li>
+                            <li>Master en Science des Données (Data Science)</li>
+                        </ul>
                         <h5>Débouchés :</h5>
                         <ul>
                             <li>Data Analyst</li>
                             <li>Chargé d'études statistiques</li>
                             <li>Poursuite en Master de recherche</li>
                         </ul>
+
                         <a href="{{ url_for('static', filename='maquettes/l3_maths.pdf') }}" target="_blank" class="btn-pdf spec-btn">Consulter Maquette S5/S6</a>
                     </div>
                 </details>
@@ -78,6 +91,12 @@
                     <div class="spec-content">
                         <h5>À propos de la Licence Physique :</h5>
                         <p>Formation axée sur les nanosciences, les énergies renouvelables et le spatial.</p>
+                        <h5>Poursuite d'études (Masters) :</h5>
+                        <ul>
+                            <li>Master en Énergies Renouvelables et Transition Énergétique</li>
+                            <li>Master en Physique des Matériaux et Nanotechnologies</li>
+                            <li>Master en Électronique, Instrumentation et Systèmes Embarqués</li>
+                        </ul>
                         <h5>Débouchés :</h5>
                         <ul>
                             <li>Technicien supérieur en énergie</li>
@@ -85,6 +104,69 @@
                             <li>Ingénierie physique</li>
                         </ul>
                         <a href="{{ url_for('static', filename='maquettes/l3_physique.pdf') }}" target="_blank" class="btn-pdf spec-btn">Consulter Maquette S5/S6</a>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </article>
+
+    <article class="formation-card">
+        <div class="formation-header">
+            <h2>Portail : Mathématiques et Informatique Appliquées aux Sciences Sociales (MIASS)</h2>
+            <div class="formation-badges">
+                <span class="badge niveau"><i class="fas fa-graduation-cap"></i> Niveau : Licence (Bac +3)</span>
+                <span class="badge duree"><i class="fas fa-clock"></i> Durée : 3 ans (6 Semestres)</span>
+            </div>
+        </div>
+
+        <div class="formation-objective">
+            <h3>Objectif et Parcours</h3>
+            <p>
+                Cette filière a pour objectif de former des spécialistes dans les métiers de la finance, de l’économie et de la gestion des organisations et de l’entreprise.
+            </p>
+        </div>
+
+        <div class="tronc-commun-section">
+            <h4><i class="fas fa-layer-group"></i> Tronc Commun (L1 & L2)</h4>
+            <div class="pdf-group">
+                <a href="#" class="btn-pdf">Maquette L1 (S1/S2)</a>
+                <a href="#" class="btn-pdf">Maquette L2 (S3/S4)</a>
+            </div>
+        </div>
+
+        <div class="specialisations-section">
+            <h4><i class="fas fa-code-branch"></i> Spécialisations de Licence 3</h4>
+            <p class="instruction">Cliquez sur une spécialité pour voir les détails, les débouchés et la maquette.</p>
+            
+            <div class="spec-accordion">
+                <a href="#filiere-informatique" class="spec-item-link">
+                    Licence en Informatique
+                </a>
+
+                <a href="#filiere-mathematiques" class="spec-item-link">
+                    Licence en Mathématiques et Modélisation
+                </a>
+
+                <details class="spec-item">
+                    <summary>Licence en Économie et Gestion</summary>
+                    <div class="spec-content">
+                        <p><strong>À propos de la Licence Éco-Gestion :</strong></p>
+                        <p>Cette spécialisation forme aux sciences économiques, à la gestion des organisations et à l'analyse financière des entreprises en s'appuyant sur les outils mathématiques et informatiques.</p>
+                        
+                        <p><strong>Poursuite d'études (Masters) :</strong></p>
+                        <ul>
+                            <li>Master en Monnaie, Banque, Finance et Assurance</li>
+                            <li>Master en Économie du Développement</li>
+                            <li>Master en Gestion des Entreprises et Management</li>
+                        </ul>
+
+                        <p><strong>Débouchés :</strong></p>
+                        <ul>
+                            <li>Analyste Économique / Financier</li>
+                            <li>Chargé d'études de marché</li>
+                            <li>Gestionnaire de projet en entreprise ou organisation</li>
+                        </ul>
+                        <a href="#" class="btn-pdf spec-btn">Consulter Maquette S5/S6</a>
                     </div>
                 </details>
             </div>
@@ -116,6 +198,38 @@
             </tbody>
         </table>
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const redirectLinks = document.querySelectorAll('.spec-item-link');
+            
+            redirectLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        e.preventDefault(); 
+                        
+                        // 1. On fait défiler la page pour centrer l'élément à l'écran
+                        targetElement.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'center' // 'center' est mieux pour attirer l'œil
+                        });
+
+                        // 2. On retire l'animation si elle y était déjà, pour pouvoir la rejouer
+                        targetElement.classList.remove('highlight-active');
+                        
+                        // 3. Petite astuce JS pour relancer l'animation proprement
+                        void targetElement.offsetWidth; 
+                        
+                        // 4. On ajoute la classe qui déclenche l'animation de couleur
+                        targetElement.classList.add('highlight-active');
+                    }
+                });
+            });
+        });
+    </script>
 
 </main>
 {% endblock %}
