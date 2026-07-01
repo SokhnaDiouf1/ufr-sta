@@ -2,7 +2,7 @@
 
 {% block content %}
 <section class="page-header">
-    <h1>Les Départements de l'UFR STA</h1>
+    <h1>Départements de l'UFR STA</h1>
     <p>Découvrez nos pôles d'excellence d'enseignement et de recherche institutionnelle</p>
 </section>
 
@@ -22,25 +22,23 @@
                 <h4>Filières administrées par le département :</h4>
                 <div class="badges-container">
                     <span class="filiere-badge">MPI (Mathématiques, Physique et Informatique)</span>
-                    <span class="filiere-badge">MIAS (Mathématiques, Informatique Appliquées aux Sciences Sociales)</span>
+                    <span class="filiere-badge">MIASS (Mathématiques, Informatique Appliquées aux Sciences Sociales)</span>
                 </div>
             </div>
             
             <div class="dept-contact-card">
                 <div class="contact-info">
                     <p class="contact-label">Responsable du Département</p>
-                    <p class="contact-name"><i class="fas fa-user-tie"></i> Dr. Amadou DIOP</p>
+                    <p class="contact-name"><i class="fas fa-user-tie"></i> Mr.T.M.M.Sow</p>
                 </div>
                 <div class="contact-info">
                     <p class="contact-label">Contact Professionnel</p>
-                    <p class="contact-email"><i class="fas fa-envelope"></i> <a href="mailto:mim.sta@uam.edu.sn">mim.sta@uam.edu.sn</a></p>
+                    <p class="contact-email"><i class="fas fa-envelope"></i> <a href="mailto:chef-departement-mim@uam.edu.sn">chef-departement-mim@uam.edu.sn</a></p>
                 </div>
             </div>
         </div>
         <div class="dept-image">
-            <div class="image-placeholder bg-mim">
-                <i class="fas fa-laptop-code"></i>
-            </div>
+            <img src="{{ url_for('static', filename='images/mim.jpeg') }}" alt="Département MIM" class="dept-img-real">
         </div>
     </section>
 
@@ -65,18 +63,16 @@
             <div class="dept-contact-card">
                 <div class="contact-info">
                     <p class="contact-label">Responsable du Département</p>
-                    <p class="contact-name"><i class="fas fa-user-tie"></i> Dr. Fatou SOW</p>
+                    <p class="contact-name"><i class="fas fa-user-tie"></i> Mr. Makha NDAO</p>
                 </div>
                 <div class="contact-info">
                     <p class="contact-label">Contact Professionnel</p>
-                    <p class="contact-email"><i class="fas fa-envelope"></i> <a href="mailto:smu.sta@uam.edu.sn">smu.sta@uam.edu.sn</a></p>
+                    <p class="contact-email"><i class="fas fa-envelope"></i> <a href="mailto:chef-departement-smu.sta@uam.edu.sn">chef-departement-smu@uam.edu.sn</a></p>
                 </div>
             </div>
         </div>
         <div class="dept-image">
-            <div class="image-placeholder bg-smu">
-                <i class="fas fa-globe-africa"></i>
-            </div>
+            <img src="{{ url_for('static', filename='images/smu.jpeg') }}" alt="Département SMU" class="dept-img-real">
         </div>
     </section>
 

@@ -10,5 +10,9 @@ def accueil():
 def departements():
     return render_template('departements.html')
 
+@app.route('/formations')
+def formations():
+    return render_template('formations.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
