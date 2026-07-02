@@ -1400,7 +1400,7 @@ header.scrolled .logo {
 }
 
 .section-title {
-    color: var(--bleu-uam);
+    color: #000000 ;
     margin-bottom: 25px;
     text-align: center;
 }
@@ -1418,7 +1418,7 @@ header.scrolled .logo {
 
 .ufr-table th {
     background-color: #f8fafc;
-    color: var(--bleu-uam);
+    color: #000000;
     text-transform: uppercase;
     font-size: 14px;
 }
@@ -1428,121 +1428,13 @@ header.scrolled .logo {
 }
 
 .ufr-table td strong {
-    color: var(--marron-uam);
+    color: #1a1a1a;
 }
 
 /* ==========================================================================
    MIASS 
    ========================================================================== */
 
-/* 1. Conteneur principal et Carte de la formation */
-.formations-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px 60px 20px;
-}
-
-.formation-card {
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-    padding: 40px;
-    margin-bottom: 50px;
-    border-top: 5px solid var(--marron-uam); /* Rappel de la couleur de l'UAM */
-}
-
-/* 2. En-tête et Badges (Niveau, Durée) */
-.formation-header {
-    text-align: center;
-    margin-bottom: 25px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
-}
-
-.formation-header h2 {
-    color: #1a1a1a;
-    font-size: 28px;
-    margin-bottom: 15px;
-}
-
-.formation-badges {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.badge {
-    background-color: #f1f5f9;
-    color: #334155;
-    padding: 8px 16px;
-    border-radius: 30px;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-/* 3. Textes et Objectifs */
-.formation-objective {
-    margin-bottom: 30px;
-    line-height: 1.7;
-    color: #444;
-}
-
-.formation-objective h3 {
-    color: #1a1a1a;
-    margin-bottom: 10px;
-}
-
-/* 4. Boutons PDF */
-.btn-admission-link {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 25px;
-    background-color: var(--marron-uam);
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: 600;
-    transition: background-color 0.3s;
-}
-
-.btn-admission-link:hover {
-    background-color: #8b4513; /* Marron un peu plus foncé */
-}
-
-.tronc-commun-section {
-    margin-bottom: 30px;
-    background: #f8fafc;
-    padding: 20px;
-    border-radius: 8px;
-}
-
-.tronc-commun-section h4 {
-    margin-bottom: 15px;
-    color: #1e293b;
-}
-
-.pdf-group {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.btn-pdf {
-    display: inline-block;
-    background-color: var(--bleu-uam);
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 500;
-    transition: background-color 0.3s;
-}
-
-.btn-pdf:hover {
-    background-color: var(--marron-uam);
-    color: #fff;
-}
 
 /* ==========================================================================
    5. Système d'accordéon pour les spécialités L3 et Liens MIASS
@@ -1660,48 +1552,7 @@ header.scrolled .logo {
     background-color: #f1f5f9;
 }
 
-/* ==========================================================================
-   6. Tableau des Admissions
-   ========================================================================== */
-.admissions-table-container {
-    margin-top: 60px;
-    background: white;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
 
-.section-title {
-    color: var(--bleu-uam);
-    margin-bottom: 25px;
-    text-align: center;
-}
-
-.ufr-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.ufr-table th, .ufr-table td {
-    border: 1px solid #e2e8f0;
-    padding: 15px;
-    text-align: left;
-}
-
-.ufr-table th {
-    background-color: #f8fafc;
-    color: var(--bleu-uam);
-    text-transform: uppercase;
-    font-size: 14px;
-}
-
-.ufr-table tr:nth-child(even) {
-    background-color: #fcfcfc;
-}
-
-.ufr-table td strong {
-    color: var(--marron-uam);
-}
 /* Animation pour indiquer à l'utilisateur où cliquer */
 @keyframes flashHighlight {
     0% { background-color: #f8fafc; border-color: #e2e8f0; }
@@ -1711,4 +1562,51 @@ header.scrolled .logo {
 
 .highlight-active {
     animation: flashHighlight 2s ease-in-out;
+}
+
+/* Layout Côte à Côte : Texte à gauche, Image à droite */
+.formation-intro-container {
+    display: flex;
+    gap: 35px; /* Un peu plus d'espace entre le texte et la grande photo */
+    align-items: flex-start; /* <-- Force l'alignement par le HAUT (anciennement center) */
+    margin-bottom: 25px;
+}
+
+.formation-intro-container .formation-objective {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* Aligne le haut du titre H3 parfaitement avec le haut de l'image */
+.formation-intro-container .formation-objective h3 {
+    margin-top: 0; /* Enlève la marge invisible du navigateur qui poussait le titre vers le bas */
+}
+
+/* Boîte de la photo agrandie */
+.formation-image-side {
+    flex: 0 0 430px; /* <-- Largeur augmentée (anciennement 350px) */
+    height: 270px;   /* <-- Hauteur augmentée (anciennement 220px) */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.formation-image-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Remplit la grande boîte proprement sans déformer */
+}
+
+/* Version Mobile / Tablette */
+@media (max-width: 992px) { /* Ajusté à 992px pour que la grande photo bascule avant d'être trop serrée */
+    .formation-intro-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .formation-image-side {
+        width: 100%;
+        flex: none;
+        height: 240px;
+    }
 }

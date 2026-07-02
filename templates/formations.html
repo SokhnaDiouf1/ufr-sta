@@ -4,12 +4,11 @@
 <section class="page-header formations-header">
     <h1>Nos Formations</h1>
     <p>Un parcours progressif vers l'expertise scientifique</p>
-    <a href="#admissions-section" class="btn-admission-link">Consulter les critères d'admission</a>
 </section>
 
 <main class="formations-container">
 
-    <article class="formation-card">
+    <article class="formation-card" id="portail-mpi">
         <div class="formation-header">
             <h2>Portail : Mathématiques, Physique et Informatique (MPI)</h2>
             <div class="formation-badges">
@@ -18,23 +17,22 @@
             </div>
         </div>
 
-        <div class="formation-objective">
-            <h3>Objectif et Parcours</h3>
-            <p>
-                Le portail MPI propose une formation innovante et pluridisciplinaire. 
-                <strong>Le tronc commun (S1 à S3)</strong> permet d'acquérir des bases solides en mathématiques, physique et informatique. 
-                À partir du semestre 4, l'étudiant commence à s'orienter pour choisir une spécialisation définitive en Licence 3.
-            </p>
-            <p>
-                L'objectif est de former des cadres capables d'accompagner le développement économique du Sénégal dans les secteurs du numérique, de l'énergie et de la modélisation.
-            </p>
+        <div class="formation-intro-container">
+            <div class="formation-objective">
+                <h3>Objectif et Parcours</h3>
+                <p>Le portail MPI propose une formation innovante et pluridisciplinaire...</p>
+                <p>L'objectif est de former des cadres capables d'accompagner...</p>
+            </div>
+            <div class="formation-image-side">
+                <img src="{{ url_for('static', filename='images/photo_mpi.jpeg') }}" alt="Filière MPI">
+            </div>
         </div>
 
         <div class="tronc-commun-section">
             <h4><i class="fas fa-layer-group"></i> Tronc Commun (L1 & L2)</h4>
             <div class="pdf-group">
-                <a href="{{ url_for('static', filename='maquettes/mpi_l1.pdf') }}" target="_blank" class="btn-pdf">Maquette L1 (S1/S2)</a>
-                <a href="{{ url_for('static', filename='maquettes/mpi_l2.pdf') }}" target="_blank" class="btn-pdf">Maquette L2 (S3/S4)</a>
+                <a href="{{ url_for('static', filename='images/mpi_l1.pdf') }}" target="_blank" class="btn-pdf">Maquette L1 (S1/S2)</a>
+                <a href="{{ url_for('static', filename='images/mpi_l2.pdf') }}" target="_blank" class="btn-pdf">Maquette L2 (S3/S4)</a>
             </div>
         </div>
 
@@ -110,7 +108,7 @@
         </div>
     </article>
 
-    <article class="formation-card">
+    <article class="formation-card" id="portail-miass">
         <div class="formation-header">
             <h2>Portail : Mathématiques et Informatique Appliquées aux Sciences Sociales (MIASS)</h2>
             <div class="formation-badges">
@@ -119,18 +117,21 @@
             </div>
         </div>
 
-        <div class="formation-objective">
-            <h3>Objectif et Parcours</h3>
-            <p>
-                Cette filière a pour objectif de former des spécialistes dans les métiers de la finance, de l’économie et de la gestion des organisations et de l’entreprise.
-            </p>
+        <div class="formation-intro-container">
+            <div class="formation-objective">
+                <h3>Objectif et Parcours</h3>
+                <p>Cette filière a pour objectif de former des spécialistes dans les métiers de la finance...</p>
+            </div>
+            <div class="formation-image-side">
+                <img src="{{ url_for('static', filename='images/photo_miass.jpeg') }}" alt="Filière MIASS">
+            </div>
         </div>
 
         <div class="tronc-commun-section">
             <h4><i class="fas fa-layer-group"></i> Tronc Commun (L1 & L2)</h4>
             <div class="pdf-group">
-                <a href="#" class="btn-pdf">Maquette L1 (S1/S2)</a>
-                <a href="#" class="btn-pdf">Maquette L2 (S3/S4)</a>
+                <a href="{{ url_for('static', filename='images/miass_l1.pdf') }}" target="_blank" class="btn-pdf">Maquette L1 (S1/S2)</a>
+                <a href="{{ url_for('static', filename='images/miass_l2.pdf') }}" target="_blank" class="btn-pdf">Maquette L2 (S3/S4)</a>
             </div>
         </div>
 
@@ -173,32 +174,6 @@
         </div>
     </article>
 
-    <section id="admissions-section" class="admissions-table-container">
-        <h2 class="section-title">Critères d'admission</h2>
-        <table class="ufr-table">
-            <thead>
-                <tr>
-                    <th>Filières</th>
-                    <th>Séries au BAC</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>MPI</strong> (Mathématiques, Physique et Informatique)</td>
-                    <td>S1, S1A, S2, S2A, S3 et S4</td>
-                </tr>
-                <tr>
-                    <td><strong>SML</strong> (Sciences de la Mer et du Littoral)</td>
-                    <td>S1, S1A, S2, S2A, S3 et S4</td>
-                </tr>
-                <tr>
-                    <td><strong>MIASS</strong> (Mathématiques Appliquées aux Sciences Sociales)</td>
-                    <td>S1, S1A, S2, S2A, S3, S4 et STEG</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const redirectLinks = document.querySelectorAll('.spec-item-link');
@@ -230,6 +205,109 @@
             });
         });
     </script>
+    <article class="formation-card" id="portail-sml">
+        <div class="formation-header">
+            <h2>Portail : Sciences de la Mer et du Littoral (SML)</h2>
+            <div class="formation-badges">
+                <span class="badge niveau"><i class="fas fa-graduation-cap"></i> Niveau : Licence (Bac +3)</span>
+                <span class="badge duree"><i class="fas fa-clock"></i> Durée : 3 ans (6 Semestres)</span>
+            </div>
+        </div>
+
+        <div class="formation-intro-container">
+            <div class="formation-objective">
+                <h3>Objectif et Parcours</h3>
+                <p>Cette filière a pour objectif d’offrir aux étudiants la possibilité d’acquérir une formation...</p>
+                <p>Elle prépare les étudiants aux métiers de la protection et de l’aménagement des côtes...</p>
+            </div>
+            <div class="formation-image-side">
+                <img src="{{ url_for('static', filename='images/photo_sml.jpeg') }}" alt="Filière SML">
+            </div>
+        </div>
+
+        <div class="tronc-commun-section">
+            <h4><i class="fas fa-layer-group"></i> Tronc Commun (L1 & L2)</h4>
+            <div class="pdf-group">
+                <a href="{{ url_for('static', filename='images/sml_l1.pdf') }}" target="_blank" class="btn-pdf">Maquette L1 (S1/S2)</a>
+                <a href="{{ url_for('static', filename='images/sml_l2.pdf') }}" target="_blank" class="btn-pdf">Maquette L2 (S3/S4)</a>
+            </div>
+        </div>
+
+        <div class="specialisations-section">
+            <h4><i class="fas fa-project-diagram"></i> Spécialisations de Licence 3</h4>
+            <p class="instruction">Actuellement, le parcours de L3 est pluridisciplinaire. Voici les grands domaines couverts par la formation :</p>
+            
+            <div class="spec-accordion">
+                <details class="spec-item">
+                    <summary>Génie Côtier, Portuaire et Maritime</summary>
+                    <div class="spec-content">
+                        <h5>À propos du domaine :</h5>
+                        <p>Focus sur la conception, la protection et l'aménagement des infrastructures littorales, ainsi que la gestion des plateformes offshores (pétrolières et gazières).</p>
+                        <h5>Débouchés :</h5>
+                        <ul>
+                            <li>Chargé de mission / ingénieur d’étude en environnement littoral</li>
+                            <li>Expert en aménagement pour les industries de la mer, collectivités territoriales et agences d'état</li>
+                            <li>Enseignant-Chercheur ou Chercheur (après poursuite d'études)</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="spec-item">
+                    <summary>Biologie et Écologie Marine</summary>
+                    <div class="spec-content">
+                        <h5>À propos du domaine :</h5>
+                        <p>Étude approfondie de la biodiversité marine, de la dynamique des populations halieutiques et de la préservation des écosystèmes marins.</p>
+                        <h5>Débouchés :</h5>
+                        <ul>
+                            <li>Chercheur en biologie et écologie marine en laboratoires institutionnels</li>
+                            <li>Chargé d'étude en conservatoires et parcs marins</li>
+                            <li>Expert pour des associations environnementales</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="spec-item">
+                    <summary>Économie Bleue et Résilience Climatique</summary>
+                    <div class="spec-content">
+                        <h5>À propos du domaine :</h5>
+                        <p>Analyse des impacts climatiques sur les territoires littoraux et développement de stratégies économiques durables autour des ressources maritimes.</p>
+                        <h5>Débouchés :</h5>
+                        <ul>
+                            <li>Consultant ou chargé d'étude en bureaux d'études</li>
+                            <li>Responsable environnement et développement d'entreprises privées</li>
+                            <li>Gestionnaire de projets pour la résilience des territoires littoraux</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </article>
+
+    <section id="admissions-section" class="admissions-table-container">
+        <h2 class="section-title">Critères d'admission</h2>
+        <table class="ufr-table">
+            <thead>
+                <tr>
+                    <th>Filières</th>
+                    <th>Séries au BAC</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>MPI</strong> (Mathématiques, Physique et Informatique)</td>
+                    <td>S1, S1A, S2, S2A, S3 et S4</td>
+                </tr>
+                <tr>
+                    <td><strong>SML</strong> (Sciences de la Mer et du Littoral)</td>
+                    <td>S1, S1A, S2, S2A, S3 et S4</td>
+                </tr>
+                <tr>
+                    <td><strong>MIASS</strong> (Mathématiques Appliquées aux Sciences Sociales)</td>
+                    <td>S1, S1A, S2, S2A, S3, S4 et STEG</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 
 </main>
 {% endblock %}

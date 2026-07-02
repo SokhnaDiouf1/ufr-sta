@@ -54,8 +54,9 @@
                 <li class="dropdown">
                     <a href="{{ url_for('formations') }}">Formations <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href="formations.html#mpi">Filière MPI</a></li>
-                        <li><a href="formations.html#sml">Filière SML</a></li>
+                        <li><a href="{{ url_for('formations') }}#portail-mpi">Filière MPI</a></li>
+                        <li><a href="{{ url_for('formations') }}#portail-sml">Filière SML</a></li>
+                        <li><a href="{{ url_for('formations') }}#portail-miass">Filière MIASS</a></li>
                     </ul>
                 </li>
 
