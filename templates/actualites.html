@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Actualités{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+    <h1>Actualités</h1>
+    <p>
+        Retrouvez les dernières informations, événements et annonces de l'UFR STA.
+    </p>
+</section>
+
+<section class="actualites-container">
+
+    <div class="carte-actualite">
+        <img src="{{ url_for('static', filename='images/actualites/rentree.jpg') }}" alt="Rentrée académique">
+
+        <h2>Rentrée académique 2026</h2>
+
+        <p class="date">02 septembre 2026</p>
+
+        <p>
+            L'UFR STA informe les étudiants de l'ouverture officielle de la nouvelle année universitaire.
+        </p>
+    </div>
+
+    <div class="carte-actualite">
+        <img src="{{ url_for('static', filename='images/actualites/conference.jpg') }}" alt="Conférence">
+
+        <h2>Conférence scientifique</h2>
+
+        <p class="date">15 octobre 2026</p>
+
+        <p>
+            Une conférence sur l'intelligence artificielle sera animée par des enseignants-chercheurs et des professionnels.
+        </p>
+    </div>
+
+    <div class="carte-actualite">
+        <img src="{{ url_for('static', filename='images/actualites/concours.jpg') }}" alt="Concours">
+
+        <h2>Concours d'innovation</h2>
+
+        <p class="date">20 novembre 2026</p>
+
+        <p>
+            Les étudiants sont invités à présenter leurs projets innovants lors du concours annuel de l'UFR STA.
+        </p>
+    </div>
+
+</section>
+
+{% endblock %}

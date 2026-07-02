@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Activités{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+    <h1>Nos Activités</h1>
+    <p>
+        L'UFR STA organise régulièrement des activités académiques, scientifiques et culturelles
+        afin d'enrichir la formation des étudiants.
+    </p>
+</section>
+
+<section class="activites">
+
+    <div class="carte-activite">
+        <img src="{{ url_for('static', filename='images/IMG_7755 3.jpg') }}" alt="Conférence">
+        <h2>Conférences scientifiques</h2>
+        <p>
+            Des conférences animées par des enseignants-chercheurs et des professionnels.
+        </p>
+    </div>
+
+    <div class="carte-activite">
+        <img src="{{ url_for('static', filename='images/71788128-8929-46bb-9818-380d89e13a3c 2.JPG') }}" alt="Atelier">
+        <h2>Ateliers pratiques</h2>
+        <p>
+            Des ateliers pour développer les compétences techniques et professionnelles.
+        </p>
+    </div>
+
+    <div class="carte-activite">
+        <img src="{{ url_for('static', filename='images/activites/hackathon.jpg') }}" alt="Hackathon">
+        <h2>Hackathons</h2>
+        <p>
+            Des compétitions permettant aux étudiants de proposer des solutions innovantes.
+        </p>
+    </div>
+
+    <div class="carte-activite">
+        <img src="{{ url_for('static', filename='images/activites/visite.jpg') }}" alt="Visite pédagogique">
+        <h2>Visites pédagogiques</h2>
+        <p>
+            Des visites d'entreprises et de laboratoires pour découvrir le monde professionnel.
+        </p>
+    </div>
+
+</section>
+
+{% endblock %}

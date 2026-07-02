@@ -6,13 +6,36 @@ app = Flask(__name__)
 def accueil():
     return render_template('index.html')
 
+
 @app.route('/departements')
 def departements():
     return render_template('departements.html')
 
+
 @app.route('/formations')
 def formations():
     return render_template('formations.html')
+
+
+@app.route('/actualites')
+def actualites():
+    return render_template('actualites.html')
+
+
+@app.route('/activites')
+def activites():
+    return render_template('activites.html')
+
+
+@app.route('/galerie')
+def galerie():
+    return render_template('galerie.html')
+
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
