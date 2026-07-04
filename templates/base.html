@@ -133,12 +133,13 @@
             <div class="footer-colonne">
                 <h4 class="footer-titre">Accès Rapide</h4>
                 <ul class="footer-liens">
-                    <li><a href="/"><i class="fas fa-angle-right"></i> Présentation de l'UFR</a></li>
-                    <li><a href="#mot-directeur"><i class="fas fa-angle-right"></i> Mot du Directeur</a></li>
-                    <li><a href="/formations"><i class="fas fa-angle-right"></i> Nos formations</a></li>
-                    <li><a href="/enseignants"><i class="fas fa-angle-right"></i> Nos Enseignants</a></li>
-                    <li><a href="/activites"><i class="fas fa-angle-right"></i> Nos activités</a></li>
-                    <li><a href="/contact"><i class="fas fa-angle-right"></i> Nous contacter</a></li>
+                    <li><a href="{{ url_for('accueil') }}#presentation-ufr"><i class="fas fa-angle-right"></i> Présentation de l'UFR</a></li>
+                    <li><a href="{{ url_for('accueil') }}#mot-directeur"><i class="fas fa-angle-right"></i> Mot du Directeur</a></li>
+                    
+                    <li><a href="{{ url_for('formations') }}"><i class="fas fa-angle-right"></i> Nos formations</a></li>
+                    <li><a href="{{ url_for('activites') }}"><i class="fas fa-angle-right"></i> Nos activités</a></li>
+                    <li><a href="{{ url_for('contact') }}"><i class="fas fa-angle-right"></i> Nous contacter</a></li>
+
                 </ul>
             </div>
 
