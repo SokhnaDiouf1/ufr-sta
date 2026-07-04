@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier une actualité</title>
+</head>
+<body>
+
+<h1>Modifier une actualité</h1>
+
+<form method="POST">
+
+    <label>Titre</label><br>
+    <input type="text"
+           name="titre"
+           value="{{ actualite.titre }}"
+           required>
+
+    <br><br>
+
+    <label>Contenu</label><br>
+
+    <textarea
+        name="contenu"
+        rows="8"
+        cols="60"
+        required>{{ actualite.contenu }}</textarea>
+
+    <br><br>
+
+    <button type="submit">
+        Enregistrer les modifications
+    </button>
+
+</form>
+
+<br>
+
+<a href="{{ url_for('admin_actualites') }}">
+    Retour
+</a>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des actualités</title>
+</head>
+<body>
+
+<h1>Gestion des actualités</h1>
+
+<h2>Ajouter une actualité</h2>
+
+
+<form method="POST" enctype="multipart/form-data">
+
+    <label>Titre</label><br>
+    <input type="text" name="titre" required><br><br>
+
+    <label>Contenu</label><br>
+    <textarea name="contenu" rows="6" cols="60" required></textarea><br><br>
+
+    <label>Image</label><br>
+    <input type="file" name="image" accept="image/*">
+
+    <br><br>
+
+    <button type="submit">
+        Ajouter
+    </button>
+
+</form> 
+
+<hr>
+
+<h2>Liste des actualités</h2>
+
+{% for actualite in actualites %}
+
+<div>
+
+    <h3>{{ actualite.titre }}</h3>
+    <small>{{ actualite.date_publication.strftime('%d/%m/%Y') }}</small>
+
+    
+    {% if actualite.image %}
+        <br>
+        <img src="{{ url_for('static', filename='images/actualites/' + actualite.image) }}" width="150" alt="Image de l'actualité">
+    {% endif %}
+
+    <p>{{ actualite.contenu }}</p>
+
+    <a href="{{ url_for('modifier_actualite', id=actualite.id) }}">
+        Modifier
+    </a>
+    &nbsp;
+    <a href="{{ url_for('supprimer_actualite', id=actualite.id) }}">
+        Supprimer
+    </a>
+
+</div>
+
+<hr>
+
+{% endfor %}
+
+</body>
+</html>

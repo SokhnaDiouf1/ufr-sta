@@ -13,35 +13,20 @@
 
 <section class="galerie-container">
 
-    <div class="galerie-item">
-        <img src="{{ url_for('static', filename='images/galerie/campus.jpg') }}" alt="Campus UAM">
-        <h3>Campus de l'UAM</h3>
+    {% for photo in photos %}
+
+    <div class="photo">
+
+        <img src="{{ url_for('static', filename='images/galerie/' + photo.image) }}"
+             alt="{{ photo.titre }}">
+
+        <h3>{{ photo.titre }}</h3>
+
+        <p>{{ photo.description }}</p>
+
     </div>
 
-    <div class="galerie-item">
-        <img src="{{ url_for('static', filename='images/galerie/laboratoire.jpg') }}" alt="Laboratoire">
-        <h3>Laboratoire informatique</h3>
-    </div>
-
-    <div class="galerie-item">
-        <img src="{{ url_for('static', filename='images/galerie/conference.jpg') }}" alt="Conférence">
-        <h3>Conférence scientifique</h3>
-    </div>
-
-    <div class="galerie-item">
-        <img src="{{ url_for('static', filename='images/galerie/remise_diplomes.jpg') }}" alt="Remise des diplômes">
-        <h3>Remise des diplômes</h3>
-    </div>
-
-    <div class="galerie-item">
-        <img src="{{ url_for('static', filename='images/galerie/etudiants.jpg') }}" alt="Étudiants">
-        <h3>Vie étudiante</h3>
-    </div>
-
-    <div class="galerie-item">
-        <img src="{{ url_for('static', filename='images/galerie/salle_cours.jpg') }}" alt="Salle de cours">
-        <h3>Salles de cours</h3>
-    </div>
+    {% endfor %}
 
 </section>
 

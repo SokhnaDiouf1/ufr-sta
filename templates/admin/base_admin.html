@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Administration{% endblock %}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <aside class="sidebar">
+
+        <h2>UFR STA</h2>
+
+        <a href="{{ url_for('admin_dashboard') }}">🏠 Tableau de bord</a>
+
+        <a href="{{ url_for('admin_actualites') }}">📰 Actualités</a>
+
+        <a href="{{ url_for('admin_activites') }}">📅 Activités</a>
+
+        <a href="{{ url_for('admin_galerie') }}">🖼 Galerie</a>
+
+        <a href="{{ url_for('admin_formations') }}">🎓 Formations</a>
+
+        <hr>
+
+        <a href="/">🌍 Voir le site</a>
+        
+        <a href="{{ url_for('admin_logout') }}">Déconnexion</a>
+
+    </aside>
+
+    <main class="contenu-admin">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+</div>
+
+</body>
+</html>

@@ -231,5 +231,36 @@
         });
     </script>
 
+{% if formations %}
+
+<section class="formations-admin">
+    <h2 class="section-title">Autres formations</h2>
+
+    <div class="formations-container">
+
+        {% for formation in formations %}
+
+        <article class="formation-card">
+
+            <div class="formation-header">
+                <h2>{{ formation.nom }}</h2>
+            </div>
+
+            <div class="formation-objective">
+                <h3>Description</h3>
+                <p>{{ formation.description }}</p>
+
+                <h3>Programme</h3>
+                <p>{{ formation.programme }}</p>
+            </div>
+
+        </article>
+
+        {% endfor %}
+
+    </div>
+</section>
+
+{% endif %}
 </main>
 {% endblock %}

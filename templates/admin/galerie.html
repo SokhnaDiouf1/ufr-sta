@@ -1,0 +1,52 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}Gestion de la galerie{% endblock %}
+
+{% block content %}
+
+<h1>Gestion de la galerie</h1>
+
+<form method="POST" enctype="multipart/form-data">
+
+    <label>Titre</label><br>
+    <input type="text" name="titre" required>
+
+    <br><br>
+
+    <label>Description</label><br>
+    <textarea name="description"></textarea>
+
+    <br><br>
+
+    <label>Image</label><br>
+    <input type="file" name="image" required>
+
+    <br><br>
+
+    <button type="submit">Ajouter</button>
+
+</form>
+
+<hr>
+
+{% for photo in photos %}
+
+<h3>{{ photo.titre }}</h3>
+
+<img src="{{ url_for('static', filename='images/galerie/' + photo.image) }}"
+     width="250">
+
+<p>{{ photo.description }}</p>
+
+<a href="{{ url_for('supprimer_photo', id=photo.id) }}"
+   onclick="return confirm('Voulez-vous vraiment supprimer cette photo ?')">
+    Supprimer
+</a>
+
+<hr>
+
+
+
+{% endfor %}
+
+{% endblock %}

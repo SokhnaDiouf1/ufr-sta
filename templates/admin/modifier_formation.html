@@ -1,0 +1,33 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}Modifier une formation{% endblock %}
+
+{% block content %}
+
+<h1>Modifier une formation</h1>
+
+<form method="POST">
+
+    <label>Nom</label><br>
+    <input type="text" name="nom"
+           value="{{ formation.nom }}" required>
+
+    <br><br>
+
+    <label>Description</label><br>
+    <textarea name="description" rows="5">{{ formation.description }}</textarea>
+
+    <br><br>
+
+    <label>Programme</label><br>
+    <textarea name="programme" rows="8">{{ formation.programme }}</textarea>
+
+    <br><br>
+
+    <button type="submit">
+        Enregistrer
+    </button>
+
+</form>
+
+{% endblock %}

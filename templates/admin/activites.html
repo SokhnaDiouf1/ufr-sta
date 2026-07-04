@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des activités</title>
+</head>
+<body>
+
+<h1>Gestion des activités</h1>
+
+<form method="POST" enctype="multipart/form-data">
+
+    <label>Titre</label><br>
+    <input type="text" name="titre" required>
+
+    <br><br>
+
+    <label>Description</label><br>
+    <textarea name="description" rows="6" cols="60" required></textarea>
+
+    <br><br>
+
+    <label>Image</label><br>
+    <input type="file" name="image" accept="image/*">
+
+    <br><br>
+
+    <button type="submit">Ajouter</button>
+
+</form>
+
+<hr>
+
+{% for activite in activites %}
+
+<h3>{{ activite.titre }}</h3>
+
+<p>{{ activite.description }}</p>
+
+<p>{{ activite.date_activite.strftime('%d/%m/%Y') }}</p>
+<a href="{{ url_for('modifier_activite', id=activite.id) }}">
+    Modifier
+</a>
+
+&nbsp;&nbsp;
+
+<a href="{{ url_for('supprimer_activite', id=activite.id) }}">
+    Supprimer
+</a>
+
+<hr>
+
+<hr>
+
+{% endfor %}
+
+</body>
+</html>

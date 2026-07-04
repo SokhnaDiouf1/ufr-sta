@@ -1,0 +1,37 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}Tableau de bord{% endblock %}
+
+{% block content %}
+
+<h1>Tableau de bord</h1>
+
+<div class="dashboard">
+
+    <div class="card">
+        <h2>Actualités</h2>
+        <h1>{{ nb_actualites }}</h1>
+        <a href="{{ url_for('admin_actualites') }}">Gérer</a>
+    </div>
+
+    <div class="card">
+        <h2>Activités</h2>
+        <h1>{{ nb_activites }}</h1>
+        <a href="{{ url_for('admin_activites') }}">Gérer</a>
+    </div>
+
+    <div class="card">
+        <h2>Galerie</h2>
+        <h1>{{ nb_photos }}</h1>
+        <a href="{{ url_for('admin_galerie') }}">Gérer</a>
+    </div>
+
+    <div class="card">
+        <h2>Formations</h2>
+        <h1>{{ nb_formations }}</h1>
+        <a href="{{ url_for('admin_formations') }}">Gérer</a>
+    </div>
+
+</div>
+
+{% endblock %}

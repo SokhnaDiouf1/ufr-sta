@@ -13,41 +13,28 @@
 
 <section class="actualites-container">
 
-    <div class="carte-actualite">
-        <img src="{{ url_for('static', filename='images/actualites/rentree.jpg') }}" alt="Rentrée académique">
-
-        <h2>Rentrée académique 2026</h2>
-
-        <p class="date">02 septembre 2026</p>
-
-        <p>
-            L'UFR STA informe les étudiants de l'ouverture officielle de la nouvelle année universitaire.
-        </p>
-    </div>
+    {% for actualite in actualites %}
 
     <div class="carte-actualite">
-        <img src="{{ url_for('static', filename='images/actualites/conference.jpg') }}" alt="Conférence">
 
-        <h2>Conférence scientifique</h2>
+        {% if actualite.image %}
+        <img src="{{ url_for('static', filename='images/actualites/' + actualite.image) }}" 
+             alt="{{ actualite.titre }}">
+        {% endif %}
 
-        <p class="date">15 octobre 2026</p>
+        <h2>{{ actualite.titre }}</h2>
+
+        <p class="date">
+            {{ actualite.date_publication.strftime('%d/%m/%Y') }}
+        </p>
 
         <p>
-            Une conférence sur l'intelligence artificielle sera animée par des enseignants-chercheurs et des professionnels.
+            {{ actualite.contenu }}
         </p>
+
     </div>
 
-    <div class="carte-actualite">
-        <img src="{{ url_for('static', filename='images/actualites/concours.jpg') }}" alt="Concours">
-
-        <h2>Concours d'innovation</h2>
-
-        <p class="date">20 novembre 2026</p>
-
-        <p>
-            Les étudiants sont invités à présenter leurs projets innovants lors du concours annuel de l'UFR STA.
-        </p>
-    </div>
+    {% endfor %}
 
 </section>
 
