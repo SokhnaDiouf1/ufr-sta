@@ -9,6 +9,7 @@
     
     <link rel="stylesheet" href="static/css/style.css">
 </head>
+
 <body>
     <div class="top-bar">
             <div class="top-bar-left">
@@ -64,10 +65,29 @@
                 <a href="{{ url_for('galerie') }}">Galerie</a>
 
             </ul>
+            
+            <div class="search-container">
+                
+                <button id="search-btn" type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+                
+                <form
+                    id="search-form"
+                    action="{{ url_for('recherche') }}"
+                    method="GET">
 
-            <div class="search-icon">
-                <i class="fas fa-search"></i>
-            </div>
+                    <input
+                        type="text"
+                        name="q"
+                        placeholder="Rechercher...">
+
+                </form>
+
+</div>
+            
+
+            
         </nav>
     </header>
 
@@ -213,6 +233,26 @@
                 behavior: "smooth"
             });
         });
+    </script>
+
+    <script>
+    const btn = document.getElementById("search-btn");
+    const form = document.getElementById("search-form");
+
+    btn.addEventListener("click", function(){
+        
+        form.classList.toggle("show");
+
+    });
+
+    document.addEventListener("click", function(e){
+        
+        if(!document.querySelector(".search-container").contains(e.target)){
+            form.classList.remove("show");
+        }
+
+    });
+
     </script>
 
 </body>

@@ -183,82 +183,56 @@
 
     <div class="carousel-wrapper">
         <div class="actualites-carousel" id="actuCarousel">
-            
-            <article class="carte-actu">
-                <div class="image-actu-wrapper">
-                    <img src="static/images/actu1.jpg" alt="Actu 1">
-                </div>
-                <div class="contenu-actu">
-                    <div class="date-actu"><i class="far fa-calendar-alt"></i> 24 Juin 2026</div>
-                    <h3>Dispositif numérique pour la continuité pédagogique de l'UFR.</h3>
-                    <div class="bas-de-carte">
-                        <span class="tag-actu"><i class="fas fa-tag"></i> Actualités</span>
-                        <a href="#" class="lien-actu">Lire plus <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </article>
 
-            <article class="carte-actu">
-                <div class="image-actu-wrapper">
-                    <img src="static/images/actu2.jpg" alt="Actu 2">
-                </div>
-                <div class="contenu-actu">
-                    <div class="date-actu"><i class="far fa-calendar-alt"></i> 23 Juin 2026</div>
-                    <h3>Formation pour l'employabilité par le Centre de Langues.</h3>
-                    <div class="bas-de-carte">
-                        <span class="tag-actu"><i class="fas fa-tag"></i> Actualités</span>
-                        <a href="#" class="lien-actu">Lire plus <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </article>
+            {% for actualite in actualites %}
 
-            <article class="carte-actu">
-                <div class="image-actu-wrapper">
-                    <img src="static/images/actu3.jpg" alt="Actu 3">
-                </div>
-                <div class="contenu-actu">
-                    <div class="date-actu"><i class="far fa-calendar-alt"></i> 20 Juin 2026</div>
-                    <h3>Sortie pédagogique au Lac Rose avec la Fondation Maarif.</h3>
-                    <div class="bas-de-carte">
-                        <span class="tag-actu"><i class="fas fa-tag"></i> Actualités</span>
-                        <a href="#" class="lien-actu">Lire plus <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </article>
+<article class="carte-actu">
 
-            <article class="carte-actu">
-                <div class="image-actu-wrapper">
-                    <img src="static/images/actu4.jpg" alt="Actu 4">
-                </div>
-                <div class="contenu-actu">
-                    <div class="date-actu"><i class="far fa-calendar-alt"></i> 15 Juin 2026</div>
-                    <h3>Remise des diplômes pour la promotion sortante de MIASS.</h3>
-                    <div class="bas-de-carte">
-                        <span class="tag-actu"><i class="fas fa-tag"></i> Événement</span>
-                        <a href="#" class="lien-actu">Lire plus <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </article>
+    <div class="image-actu-wrapper">
 
-            <article class="carte-actu">
-                <div class="image-actu-wrapper">
-                    <img src="static/images/actu5.jpg" alt="Actu 5">
-                </div>
-                <div class="contenu-actu">
-                    <div class="date-actu"><i class="far fa-calendar-alt"></i> 10 Juin 2026</div>
-                    <h3>Nouveau partenariat scientifique avec les laboratoires internationaux.</h3>
-                    <div class="bas-de-carte">
-                        <span class="tag-actu"><i class="fas fa-tag"></i> Recherche</span>
-                        <a href="#" class="lien-actu">Lire plus <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </article>
+        {% if actualite.image %}
+        <img src="{{ url_for('static',
+            filename='images/actualites/' + actualite.image) }}"
+            alt="{{ actualite.titre }}">
+        {% endif %}
+
+    </div>
+
+    <div class="contenu-actu">
+
+        <div class="date-actu">
+            <i class="far fa-calendar-alt"></i>
+
+            {{ actualite.date_publication.strftime('%d/%m/%Y') }}
+        </div>
+
+        <h3>{{ actualite.titre }}</h3>
+
+        <div class="bas-de-carte">
+
+            <span class="tag-actu">
+                <i class="fas fa-tag"></i>
+                Actualité
+            </span>
+
+            <a href="/actualites" class="lien-actu">
+                Lire plus
+                <i class="fas fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</article>
+
+{% endfor %}
 
         </div>
     </div>
 
     <div class="bouton-toute-actu-container">
-        <a href="/toutes-les-actualites" class="btn-toutes-actus">AFFICHER TOUTE L'ACTUALITÉ</a>
+        <a href="{{ url_for('actualites') }}" class="btn-toutes-actus">AFFICHER TOUTE L'ACTUALITÉ</a>
     </div>
 </section>
 
@@ -285,4 +259,4 @@
     carousel.addEventListener('mouseenter', () => isScrolling = false);
     carousel.addEventListener('mouseleave', () => isScrolling = true);
 </script>
-{% endblock %}
+{% endblock %}<

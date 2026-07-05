@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, redirect, url_for
+from flask import Flask, render_template, request, session, redirect, url_for, flash
 from extensions import db
 import os
 from models import *
@@ -101,6 +101,8 @@ def admin_actualites():
         db.session.add(new)
         db.session.commit()
 
+        flash("Actualité ajoutée avec succès.", "success")
+
         return redirect(url_for('admin_actualites'))
 
     actualites = Actualite.query.all()
@@ -133,6 +135,7 @@ def admin_activites():
 
         db.session.add(activite)
         db.session.commit()
+        flash("Activité ajoutée avec succès.", "success")
 
         return redirect(url_for('admin_activites'))
 
@@ -177,6 +180,7 @@ def admin_galerie():
 
         db.session.add(photo)
         db.session.commit()
+        flash("Photo ajoutée avec succès.", "success")
 
         return redirect(url_for('admin_galerie'))
 
@@ -203,6 +207,7 @@ def supprimer_photo(id):
     # Supprimer l'enregistrement de la base
     db.session.delete(photo)
     db.session.commit()
+    flash("Photo supprimée avec succès.", "success")
 
     return redirect(url_for('admin_galerie'))
 
@@ -224,6 +229,7 @@ def admin_formations():
 
         db.session.add(formation)
         db.session.commit()
+        flash("Formation ajoutée avec succès.", "success")
 
         return redirect(url_for('admin_formations'))
 
@@ -247,6 +253,7 @@ def modifier_formation(id):
         formation.programme = request.form['programme']
 
         db.session.commit()
+        flash("Formation modifiée avec succès.", "success")
 
         return redirect(url_for('admin_formations'))
 
@@ -264,6 +271,7 @@ def supprimer_formation(id):
 
     db.session.delete(formation)
     db.session.commit()
+    flash("Formation supprimée avec succès.", "success")
 
     return redirect(url_for('admin_formations'))
 
@@ -279,6 +287,7 @@ def modifier_actualite(id):
         actualite.contenu = request.form['contenu']
 
         db.session.commit()
+        flash("Actualité modifiée avec succès.", "success")
 
         return redirect(url_for('admin_actualites'))
 
@@ -296,6 +305,7 @@ def supprimer_actualite(id):
 
     db.session.delete(actualite)
     db.session.commit()
+    flash("Actualité supprimée avec succès.", "success")
 
     return redirect(url_for('admin_actualites'))
 
@@ -311,6 +321,7 @@ def modifier_activite(id):
         activite.description = request.form['description']
 
         db.session.commit()
+        flash("Activité modifiée avec succès.", "success")
 
         return redirect(url_for('admin_activites'))
 
@@ -328,13 +339,21 @@ def supprimer_activite(id):
 
     db.session.delete(activite)
     db.session.commit()
+    flash("Activité supprimée avec succès.", "success")
 
     return redirect(url_for('admin_activites'))
 # ---------------- PAGES PUBLIC ----------------
 
 @app.route('/')
 def accueil():
-    return render_template('index.html')
+    actualites = Actualite.query.order_by(
+        Actualite.date_publication.desc()
+    ).limit(5).all()
+
+    return render_template(
+        'index.html',
+        actualites=actualites
+    )
 
 @app.route('/departements')
 def departements():
@@ -383,6 +402,77 @@ def galerie():
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
+
+@app.route("/recherche")
+def recherche():
+
+    mot = request.args.get("q", "").strip()
+
+    actualites = Actualite.query.filter(
+        (Actualite.titre.contains(mot)) |
+        (Actualite.contenu.contains(mot))
+    ).all()
+
+    activites = Activite.query.filter(
+        (Activite.titre.contains(mot)) |
+        (Activite.description.contains(mot))
+    ).all()
+
+    pages = [
+
+        {
+            "titre": "Département MIM",
+            "description": "Mathématiques, Informatique et Modélisation",
+            "url": url_for("departements") + "#mim"
+        },
+
+        {
+            "titre": "Département SMU",
+            "description": "Sciences de la Matière et de l'Univers",
+            "url": url_for("departements") + "#smu"
+        },
+
+        {
+            "titre": "Formation MPI",
+            "description": "Mathématiques, Physique et Informatique",
+            "url": url_for("formations")
+        },
+
+        {
+            "titre": "Formation MIASS",
+            "description": "Mathématiques et Informatique Appliquées aux Sciences Sociales",
+            "url": url_for("formations")
+        },
+
+        {
+            "titre": "Galerie",
+            "description": "Toutes les photos des activités de l'UFR STA",
+            "url": url_for("galerie")
+        },
+
+        {
+            "titre": "Contact",
+            "description": "Contacter l'UFR STA",
+            "url": url_for("contact")
+        }
+
+    ]
+
+    pages_resultats = []
+
+    for page in pages:
+
+        if mot.lower() in page["titre"].lower() or mot.lower() in page["description"].lower():
+
+            pages_resultats.append(page)
+
+    return render_template(
+        "recherche.html",
+        mot=mot,
+        actualites=actualites,
+        activites=activites,
+        pages=pages_resultats
+    )
 
 
 if __name__ == "__main__":

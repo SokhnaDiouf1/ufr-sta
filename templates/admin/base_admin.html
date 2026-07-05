@@ -8,7 +8,41 @@
           href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
+<script>
+
+const btn = document.getElementById("search-btn");
+const form = document.getElementById("search-form");
+
+btn.addEventListener("click",function(){
+
+    form.classList.toggle("show");
+
+    if(form.classList.contains("show")){
+        form.querySelector("input").focus();
+    }
+
+});
+
+document.addEventListener("click",function(e){
+
+    if(!document.querySelector(".search-container").contains(e.target)){
+        form.classList.remove("show");
+    }
+
+});
+
+</script>
+
 <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="notification {{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}  
 
 <div class="admin-layout">
 
@@ -29,7 +63,7 @@
         <hr>
 
         <a href="/">🌍 Voir le site</a>
-        
+
         <a href="{{ url_for('admin_logout') }}">Déconnexion</a>
 
     </aside>

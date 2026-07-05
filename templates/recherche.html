@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="page-header">
+    <h1>Résultats de recherche</h1>
+    <p>Résultats pour : <strong>"{{ mot }}"</strong></p>
+</section>
+
+<div class="recherche-container">
+
+    <section class="resultat-section">
+
+        <h2>📰 Actualités</h2>
+
+        {% for actualite in actualites %}
+
+        <div class="resultat-card">
+
+            <h3>{{ actualite.titre }}</h3>
+
+            <p>{{ actualite.contenu[:200] }}...</p>
+
+            <a href="{{ url_for('actualites') }}" class="btn-resultat">
+                Lire plus →
+            </a>
+
+        </div>
+
+        {% else %}
+
+        <div class="aucun-resultat">
+            Aucune actualité trouvée.
+        </div>
+
+        {% endfor %}
+
+    </section>
+
+    <section class="resultat-section">
+
+        <h2>📌 Activités</h2>
+
+        {% for activite in activites %}
+
+        <div class="resultat-card">
+
+            <h3>{{ activite.titre }}</h3>
+
+            <p>{{ activite.description[:200] }}...</p>
+
+            <a href="{{ url_for('activites') }}" class="btn-resultat">
+                Voir l'activité →
+            </a>
+
+        </div>
+
+        {% else %}
+
+        <div class="aucun-resultat">
+            Aucune activité trouvée.
+        </div>
+
+        {% endfor %}
+
+        <hr>
+
+        <h2>Pages du site</h2>
+        
+        {% for page in pages %}
+
+        <div class="resultat-card">
+            
+            <h3>{{ page.titre }}</h3>
+
+            <p>{{ page.description }}</p>
+
+            <a href="{{ page.url }}" class="btn-resultat">
+                Ouvrir la page →
+            </a>
+
+        </div>
+        
+        {% else %}
+
+        <p>Aucune page trouvée.</p>
+
+        {% endfor %}
+
+    </section>
+
+</div>
+
+{% endblock %}
