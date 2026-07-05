@@ -9,6 +9,7 @@
     
     <link rel="stylesheet" href="static/css/style.css">
 </head>
+
 <body>
     <div class="top-bar">
             <div class="top-bar-left">
@@ -60,14 +61,34 @@
                     </ul>
                 </li>
 
-                <li><a href="actualites.html">Actualités</a></li>
-                <li><a href="activites.html">Activités</a></li>
-                <li><a href="galerie.html">Galerie</a></li>
-            </ul>
+                <a href="{{ url_for('actualites') }}">Actualités</a>
+                <a href="{{ url_for('activites') }}">Activités</a>
+                <a href="{{ url_for('galerie') }}">Galerie</a>
 
-            <div class="search-icon">
-                <i class="fas fa-search"></i>
-            </div>
+            </ul>
+            
+            <div class="search-container">
+                
+                <button id="search-btn" type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+                
+                <form
+                    id="search-form"
+                    action="{{ url_for('recherche') }}"
+                    method="GET">
+
+                    <input
+                        type="text"
+                        name="q"
+                        placeholder="Rechercher...">
+
+                </form>
+
+</div>
+            
+
+            
         </nav>
     </header>
 
@@ -75,38 +96,6 @@
         {% block content %}
         {% endblock %}
     </main>
-
-    <script>
-        let currentSlideIndex = 0;
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-
-        function showSlide(index) {
-            // Enlève l'active partout
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            // Gère les limites
-            if (index >= slides.length) currentSlideIndex = 0;
-            else if (index < 0) currentSlideIndex = slides.length - 1;
-            else currentSlideIndex = index;
-            
-            // Ajoute l'active sur la bonne slide
-            slides[currentSlideIndex].classList.add('active');
-            dots[currentSlideIndex].classList.add('active');
-        }
-
-        function changeSlide(n) {
-            showSlide(currentSlideIndex + n);
-        }
-
-        function currentSlide(n) {
-            showSlide(n);
-        }
-
-        // Changement toutes les 6 secondes
-        setInterval(() => changeSlide(1), 6000);
-    </script>
 
     <footer class="footer-sta">
         <div class="footer-sta-container">
@@ -186,35 +175,7 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <script>
-        // On cible nos éléments
-        let boutonRemonter = document.getElementById("btn-remonter");
-        let header = document.querySelector("header");
-
-        window.onscroll = function() {
-            // 1. GESTION DU BOUTON REMONTER (Apparaît après 300px)
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                boutonRemonter.style.display = "block";
-            } else {
-                boutonRemonter.style.display = "none";
-            }
-
-            // 2. GESTION DE L'EFFET DU MENU (La classe 'scrolled' s'active dès qu'on dépasse la barre bleue)
-            if (window.scrollY > 40) { 
-                header.classList.add("scrolled");
-            } else {
-                header.classList.remove("scrolled");
-            }
-        };
-
-        // Quand on clique sur le bouton, on remonte en douceur
-        boutonRemonter.addEventListener("click", function() {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        });
-    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
 </html>

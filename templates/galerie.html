@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Galerie{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+    <h1>Galerie</h1>
+    <p>
+        Découvrez en images les activités, les infrastructures et la vie universitaire de l'UFR STA.
+    </p>
+</section>
+
+<section class="galerie-container">
+
+    {% for photo in photos %}
+
+    <div class="photo">
+
+        <img src="{{ url_for('static', filename='images/galerie/' + photo.image) }}"
+             alt="{{ photo.titre }}">
+
+        <h3>{{ photo.titre }}</h3>
+
+        <p>{{ photo.description }}</p>
+
+    </div>
+
+    {% endfor %}
+
+</section>
+
+{% endblock %}

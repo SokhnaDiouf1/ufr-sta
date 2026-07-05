@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Administration{% endblock %}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<script>
+
+const btn = document.getElementById("search-btn");
+const form = document.getElementById("search-form");
+
+btn.addEventListener("click",function(){
+
+    form.classList.toggle("show");
+
+    if(form.classList.contains("show")){
+        form.querySelector("input").focus();
+    }
+
+});
+
+document.addEventListener("click",function(e){
+
+    if(!document.querySelector(".search-container").contains(e.target)){
+        form.classList.remove("show");
+    }
+
+});
+
+</script>
+
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="notification {{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}  
+
+<div class="admin-layout">
+
+    <aside class="sidebar">
+
+        <h2>UFR STA</h2>
+
+        <a href="{{ url_for('admin_dashboard') }}">🏠 Tableau de bord</a>
+
+        <a href="{{ url_for('admin_actualites') }}">📰 Actualités</a>
+
+        <a href="{{ url_for('admin_activites') }}">📅 Activités</a>
+
+        <a href="{{ url_for('admin_galerie') }}">🖼 Galerie</a>
+
+        <a href="{{ url_for('admin_formations') }}">🎓 Formations</a>
+
+        <hr>
+
+        <a href="/">🌍 Voir le site</a>
+
+        <a href="{{ url_for('admin_logout') }}">Déconnexion</a>
+
+    </aside>
+
+    <main class="contenu-admin">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+</div>
+
+</body>
+</html>

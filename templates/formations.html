@@ -174,37 +174,6 @@
         </div>
     </article>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const redirectLinks = document.querySelectorAll('.spec-item-link');
-            
-            redirectLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    
-                    if (targetElement) {
-                        e.preventDefault(); 
-                        
-                        // 1. On fait défiler la page pour centrer l'élément à l'écran
-                        targetElement.scrollIntoView({ 
-                            behavior: 'smooth', 
-                            block: 'center' // 'center' est mieux pour attirer l'œil
-                        });
-
-                        // 2. On retire l'animation si elle y était déjà, pour pouvoir la rejouer
-                        targetElement.classList.remove('highlight-active');
-                        
-                        // 3. Petite astuce JS pour relancer l'animation proprement
-                        void targetElement.offsetWidth; 
-                        
-                        // 4. On ajoute la classe qui déclenche l'animation de couleur
-                        targetElement.classList.add('highlight-active');
-                    }
-                });
-            });
-        });
-    </script>
     <article class="formation-card" id="portail-sml">
         <div class="formation-header">
             <h2>Portail : Sciences de la Mer et du Littoral (SML)</h2>
@@ -309,5 +278,36 @@
         </table>
     </section>
 
+{% if formations %}
+
+<section class="formations-admin">
+    <h2 class="section-title">Autres formations</h2>
+
+    <div class="formations-container">
+
+        {% for formation in formations %}
+
+        <article class="formation-card">
+
+            <div class="formation-header">
+                <h2>{{ formation.nom }}</h2>
+            </div>
+
+            <div class="formation-objective">
+                <h3>Description</h3>
+                <p>{{ formation.description }}</p>
+
+                <h3>Programme</h3>
+                <p>{{ formation.programme }}</p>
+            </div>
+
+        </article>
+
+        {% endfor %}
+
+    </div>
+</section>
+
+{% endif %}
 </main>
 {% endblock %}

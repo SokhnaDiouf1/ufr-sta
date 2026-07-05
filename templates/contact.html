@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+    <h1>Nous contacter</h1>
+    <p>
+        Pour toute demande d'information, n'hésitez pas à nous contacter.
+    </p>
+</section>
+
+<section class="contact-container">
+
+    <div class="contact-info">
+
+        <h2>Coordonnées</h2>
+
+        <p><strong>📍 Adresse :</strong><br>
+        Université Amadou Mahtar Mbow<br>
+        UFR Sciences et Technologies Avancées<br>
+        Diamniadio, Sénégal</p>
+
+        <p><strong>📧 Email :</strong><br>
+        directeur-ufrsta@uam.edu.sn</p>
+
+        <p><strong>📞 Téléphone :</strong><br>
+        +221 33 800 00 00</p>
+
+        <p><strong>🕒 Horaires :</strong><br>
+        Lundi au Vendredi<br>
+        08h00 - 17h00</p>
+
+    </div>
+
+    <div class="contact-form">
+
+        <h2>Envoyer un message</h2>
+
+        <form>
+
+            <input type="text" placeholder="Nom complet" required>
+
+            <input type="email" placeholder="Adresse e-mail" required>
+
+            <input type="text" placeholder="Objet" required>
+
+            <textarea rows="6" placeholder="Votre message..." required></textarea>
+
+            <button type="submit">Envoyer</button>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}

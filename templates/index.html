@@ -105,41 +105,7 @@
     </div>
 </section>
 
-<script>
-    const sectionChiffres = document.querySelector('.chiffres-parallax');
-    const compteurs = document.querySelectorAll('.compteur');
-    const speed = 200; 
-
-    const lancerAnimation = () => {
-        compteurs.forEach(compteur => {
-            const updateCount = () => {
-                const target = +compteur.getAttribute('data-target');
-                const count = +compteur.innerText;
-                const inc = target / speed;
-
-                if (count < target) {
-                    compteur.innerText = Math.ceil(count + inc);
-                    setTimeout(updateCount, 10);
-                } else {
-                    compteur.innerText = target;
-                }
-            };
-            updateCount();
-        });
-    };
-
-    // Cet observateur détecte quand la section est visible à l'écran
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                lancerAnimation();
-                observer.unobserve(entry.target); // Permet de ne jouer l'animation qu'une seule fois
-            }
-        });
-    }, { threshold: 0.3 }); // Déclenche quand 30% de la section est visible
-
-    observer.observe(sectionChiffres);
-</script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 <section id="mot-directeur" class="mot-directeur-section">
     <div class="titre-container">
@@ -183,106 +149,58 @@
 
     <div class="carousel-wrapper">
         <div class="actualites-carousel" id="actuCarousel">
-            
-            <article class="carte-actu">
-                <div class="image-actu-wrapper">
-                    <img src="static/images/actu1.jpg" alt="Actu 1">
-                </div>
-                <div class="contenu-actu">
-                    <div class="date-actu"><i class="far fa-calendar-alt"></i> 24 Juin 2026</div>
-                    <h3>Dispositif numérique pour la continuité pédagogique de l'UFR.</h3>
-                    <div class="bas-de-carte">
-                        <span class="tag-actu"><i class="fas fa-tag"></i> Actualités</span>
-                        <a href="#" class="lien-actu">Lire plus <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </article>
 
-            <article class="carte-actu">
-                <div class="image-actu-wrapper">
-                    <img src="static/images/actu2.jpg" alt="Actu 2">
-                </div>
-                <div class="contenu-actu">
-                    <div class="date-actu"><i class="far fa-calendar-alt"></i> 23 Juin 2026</div>
-                    <h3>Formation pour l'employabilité par le Centre de Langues.</h3>
-                    <div class="bas-de-carte">
-                        <span class="tag-actu"><i class="fas fa-tag"></i> Actualités</span>
-                        <a href="#" class="lien-actu">Lire plus <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </article>
+            {% for actualite in actualites %}
 
-            <article class="carte-actu">
-                <div class="image-actu-wrapper">
-                    <img src="static/images/actu3.jpg" alt="Actu 3">
-                </div>
-                <div class="contenu-actu">
-                    <div class="date-actu"><i class="far fa-calendar-alt"></i> 20 Juin 2026</div>
-                    <h3>Sortie pédagogique au Lac Rose avec la Fondation Maarif.</h3>
-                    <div class="bas-de-carte">
-                        <span class="tag-actu"><i class="fas fa-tag"></i> Actualités</span>
-                        <a href="#" class="lien-actu">Lire plus <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </article>
+<article class="carte-actu">
 
-            <article class="carte-actu">
-                <div class="image-actu-wrapper">
-                    <img src="static/images/actu4.jpg" alt="Actu 4">
-                </div>
-                <div class="contenu-actu">
-                    <div class="date-actu"><i class="far fa-calendar-alt"></i> 15 Juin 2026</div>
-                    <h3>Remise des diplômes pour la promotion sortante de MIASS.</h3>
-                    <div class="bas-de-carte">
-                        <span class="tag-actu"><i class="fas fa-tag"></i> Événement</span>
-                        <a href="#" class="lien-actu">Lire plus <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </article>
+    <div class="image-actu-wrapper">
 
-            <article class="carte-actu">
-                <div class="image-actu-wrapper">
-                    <img src="static/images/actu5.jpg" alt="Actu 5">
-                </div>
-                <div class="contenu-actu">
-                    <div class="date-actu"><i class="far fa-calendar-alt"></i> 10 Juin 2026</div>
-                    <h3>Nouveau partenariat scientifique avec les laboratoires internationaux.</h3>
-                    <div class="bas-de-carte">
-                        <span class="tag-actu"><i class="fas fa-tag"></i> Recherche</span>
-                        <a href="#" class="lien-actu">Lire plus <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </article>
+        {% if actualite.image %}
+        <img src="{{ url_for('static',
+            filename='images/actualites/' + actualite.image) }}"
+            alt="{{ actualite.titre }}">
+        {% endif %}
+
+    </div>
+
+    <div class="contenu-actu">
+
+        <div class="date-actu">
+            <i class="far fa-calendar-alt"></i>
+
+            {{ actualite.date_publication.strftime('%d/%m/%Y') }}
+        </div>
+
+        <h3>{{ actualite.titre }}</h3>
+
+        <div class="bas-de-carte">
+
+            <span class="tag-actu">
+                <i class="fas fa-tag"></i>
+                Actualité
+            </span>
+
+            <a href="/actualites" class="lien-actu">
+                Lire plus
+                <i class="fas fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</article>
+
+{% endfor %}
 
         </div>
     </div>
 
     <div class="bouton-toute-actu-container">
-        <a href="/toutes-les-actualites" class="btn-toutes-actus">AFFICHER TOUTE L'ACTUALITÉ</a>
+        <a href="{{ url_for('actualites') }}" class="btn-toutes-actus">AFFICHER TOUTE L'ACTUALITÉ</a>
     </div>
 </section>
 
-<script>
-    const carousel = document.getElementById('actuCarousel');
-    let isScrolling = true;
 
-    // Fait défiler le carrousel vers la droite
-    const autoScroll = () => {
-        if (!isScrolling) return; // S'arrête si la souris est dessus
-        
-        // Si on arrive à la fin, on revient au début
-        if (carousel.scrollLeft >= (carousel.scrollWidth - carousel.clientWidth - 10)) {
-            carousel.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-        } else {
-            // Sinon on avance de la taille d'une carte
-            carousel.scrollBy({ left: 330, behavior: 'smooth' }); 
-        }
-    };
-
-    let scrollInterval = setInterval(autoScroll, 3000); // Défile toutes les 3 secondes
-
-    // Met en pause quand on passe la souris dessus pour pouvoir "Lire plus"
-    carousel.addEventListener('mouseenter', () => isScrolling = false);
-    carousel.addEventListener('mouseleave', () => isScrolling = true);
-</script>
-{% endblock %}
+{% endblock %}<
