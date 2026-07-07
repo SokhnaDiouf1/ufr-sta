@@ -64,13 +64,16 @@ def admin_dashboard():
     nb_activites = Activite.query.count()
     nb_formations = Formation.query.count()
     nb_photos = Galerie.query.count()
+    nb_enseignants = Enseignant.query.count()
 
     return render_template(
         'admin/dashboard.html',
         nb_actualites=nb_actualites,
         nb_activites=nb_activites,
         nb_formations=nb_formations,
-        nb_photos=nb_photos
+        nb_photos=nb_photos,
+        nb_enseignants=nb_enseignants
+        
     )
 
 @app.route('/admin/logout')
@@ -355,6 +358,8 @@ def admin_enseignants():
         departement = request.form['departement']
         email = request.form['email']
         domaine = request.form['domaine']
+        biographie = request.form['biographie']
+        
 
         fichier = request.files['photo']
 
@@ -375,6 +380,7 @@ def admin_enseignants():
             departement=departement,
             email=email,
             domaine=domaine,
+            biographie=biographie,
             photo=nom_photo
         )
 
@@ -403,6 +409,8 @@ def modifier_enseignant(id):
         enseignant.departement = request.form['departement']
         enseignant.email = request.form['email']
         enseignant.domaine = request.form['domaine']
+        enseignant.biographie = request.form['biographie']
+       
 
         fichier = request.files['photo']
 
@@ -579,6 +587,16 @@ def enseignants():
     return render_template(
         'enseignants.html',
         enseignants=enseignants
+    )
+    
+@app.route('/enseignant/<int:id>')
+def profil_enseignant(id):
+
+    enseignant = Enseignant.query.get_or_404(id)
+
+    return render_template(
+        "profil_enseignant.html",
+        enseignant=enseignant
     )
 
 if __name__ == "__main__":

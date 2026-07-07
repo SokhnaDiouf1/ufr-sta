@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}UFR STA{% endblock %}</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="static/css/style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
@@ -33,10 +35,15 @@
     <header class="main-nav">
         <nav class="main-nav">
             <div class="logo-container">
-                <img src="static/images/logo.jpeg" alt="Logo UFR STA" class="logo">
+                <img src="{{ url_for('static', filename='images/logo.jpeg') }}"
+                     alt="Logo UFR STA"
+                     class="logo">
+
                 <div class="logo-text">
                     <span class="ufr-acronym">UFR STA</span>
-                    <span class="ufr-full-name">Sciences et Technologies Avancées</span>
+                    <span class="ufr-full-name">
+                        Sciences et Technologies Avancées
+                    </span>
                 </div>
             </div>
             
@@ -103,7 +110,11 @@
             
             <div class="footer-colonne brand-col">
                 <h3 class="footer-nom-ufr">UAM - UFR STA</h3>
-                <img src="static/images/logo1.jpeg" alt="Logo UAM" class="footer-logo">
+
+                <img src="{{ url_for('static', filename='images/logo1.jpeg') }}"
+                     alt="Logo UAM"
+                     class="footer-logo">
+
                 <p class="footer-desc">
                     Unité de Formation et de Recherche en Sciences et Technologies Avancées.
                 </p>

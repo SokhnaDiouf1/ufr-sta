@@ -38,6 +38,11 @@
 
     <p>{{ enseignant.domaine }}</p>
 
+    <a href="{{ url_for('profil_enseignant', id=enseignant.id) }}"
+       class="btn-profil">
+        Voir le profil
+    </a>
+
 </div>
 
 {% endfor %}

@@ -71,3 +71,7 @@ class Enseignant(db.Model):
     domaine = db.Column(db.Text, nullable=False)
 
     photo = db.Column(db.String(255))
+    
+    biographie = db.Column(db.Text)
+
+   

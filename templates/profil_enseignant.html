@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}{{ enseignant.nom }}{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+    <h1>{{ enseignant.nom }}</h1>
+</section>
+
+<section class="profil-enseignant">
+
+    <div class="profil-photo">
+        {% if enseignant.photo %}
+            <img src="{{ url_for('static', filename='images/enseignants/' + enseignant.photo) }}"
+                 alt="{{ enseignant.nom }}">
+        {% endif %}
+    </div>
+
+    <div class="profil-infos">
+
+        <h2>{{ enseignant.nom }}</h2>
+
+        <h3>Biographie</h3>
+
+        <p class="biographie">{{ enseignant.biographie }}</p>
+
+        <a href="{{ url_for('enseignants') }}" class="btn-profil">
+            ← Retour aux enseignants
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

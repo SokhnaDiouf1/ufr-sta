@@ -2335,3 +2335,93 @@ header.scrolled .logo {
 .carte-enseignant strong{
     color:#8B5E3C;
 }
+/* =========================
+   PROFIL ENSEIGNANT
+========================= */
+
+.profil-enseignant{
+    width:85%;
+    margin:60px auto;
+    display:flex;
+    gap:50px;
+    align-items:flex-start;
+    background:#fff;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.profil-photo{
+    flex:1;
+    text-align:center;
+}
+
+.profil-photo img{
+    width:280px;
+    height:280px;
+    object-fit:cover;
+    border-radius:50%;
+    border:8px solid #f4f4f4;
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+}
+
+.profil-infos{
+    flex:2;
+}
+
+.profil-infos h2{
+    color:#003366;
+    margin-bottom:15px;
+    font-size:32px;
+}
+
+.profil-infos h3{
+    margin-top:30px;
+    color:#8B5E3C;
+    border-left:5px solid #003366;
+    padding-left:10px;
+}
+
+.profil-infos p{
+    line-height:1.8;
+    color:#555;
+}
+
+.btn-profil{
+    display:inline-block;
+    margin-top:30px;
+    background:#003366;
+    color:#fff;
+    padding:12px 25px;
+    border-radius:8px;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.btn-profil:hover{
+    background:#8B5E3C;
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.profil-enseignant{
+    flex-direction:column;
+    text-align:center;
+}
+
+.profil-photo img{
+    width:220px;
+    height:220px;
+}
+
+.profil-infos h3{
+    text-align:left;
+}
+
+}
+.biographie{
+    white-space: pre-line;
+    line-height: 1.8;
+}
