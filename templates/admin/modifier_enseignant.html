@@ -1,0 +1,79 @@
+{% extends "admin/base_admin.html" %}
+
+{% block content %}
+
+<h1>Modifier un enseignant</h1>
+
+<form method="POST" enctype="multipart/form-data">
+
+    <label>Nom</label><br>
+    <input
+        type="text"
+        name="nom"
+        value="{{ enseignant.nom }}"
+        required>
+
+    <br><br>
+
+    <label>Grade</label><br>
+    <input
+        type="text"
+        name="grade"
+        value="{{ enseignant.grade }}"
+        required>
+
+    <br><br>
+
+    <label>Département</label><br>
+    <input
+        type="text"
+        name="departement"
+        value="{{ enseignant.departement }}"
+        required>
+
+    <br><br>
+
+    <label>Email professionnel</label><br>
+    <input
+        type="email"
+        name="email"
+        value="{{ enseignant.email }}"
+        required>
+
+    <br><br>
+
+    <label>Domaines de recherche</label><br>
+
+    <textarea
+        name="domaine"
+        rows="5"
+        required>{{ enseignant.domaine }}</textarea>
+
+    <br><br>
+
+    {% if enseignant.photo %}
+
+        <img
+            src="{{ url_for('static', filename='images/enseignants/' + enseignant.photo) }}"
+            width="150">
+
+        <br><br>
+
+    {% endif %}
+
+    <label>Nouvelle photo (facultatif)</label><br>
+
+    <input
+        type="file"
+        name="photo"
+        accept="image/*">
+
+    <br><br>
+
+    <button type="submit">
+        Enregistrer les modifications
+    </button>
+
+</form>
+
+{% endblock %}

@@ -56,3 +56,18 @@ class Administrateur(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nom_utilisateur = db.Column(db.String(100), unique=True, nullable=False)
     mot_de_passe = db.Column(db.String(255), nullable=False)
+
+class Enseignant(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+
+    nom = db.Column(db.String(150), nullable=False)
+
+    grade = db.Column(db.String(100), nullable=False)
+
+    departement = db.Column(db.String(100), nullable=False)
+
+    email = db.Column(db.String(150), nullable=False)
+
+    domaine = db.Column(db.Text, nullable=False)
+
+    photo = db.Column(db.String(255))

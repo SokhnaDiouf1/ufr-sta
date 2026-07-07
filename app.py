@@ -17,6 +17,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 # Configuration des images
 app.config["UPLOAD_ACTUALITES"] = "static/images/actualites"
 app.config["UPLOAD_ACTIVITES"] = "static/images/activites"
+app.config["UPLOAD_FOLDER_ENSEIGNANTS"] = "static/images/enseignants"
 app.config["UPLOAD_GALERIE"] = "static/images/galerie"
 
 
@@ -342,6 +343,102 @@ def supprimer_activite(id):
     flash("Activité supprimée avec succès.", "success")
 
     return redirect(url_for('admin_activites'))
+
+@app.route('/admin/enseignants', methods=['GET', 'POST'])
+def admin_enseignants():
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+
+    if request.method == 'POST':
+        nom = request.form['nom']
+        grade = request.form['grade']
+        departement = request.form['departement']
+        email = request.form['email']
+        domaine = request.form['domaine']
+
+        fichier = request.files['photo']
+
+        nom_photo = None
+
+        if fichier and fichier.filename != "":
+            nom_photo = secure_filename(fichier.filename)
+            fichier.save(
+                os.path.join(
+                    "static/images/enseignants",
+                    nom_photo
+                )
+            )
+
+        enseignant = Enseignant(
+            nom=nom,
+            grade=grade,
+            departement=departement,
+            email=email,
+            domaine=domaine,
+            photo=nom_photo
+        )
+
+        db.session.add(enseignant)
+        db.session.commit()
+
+        return redirect(url_for('admin_enseignants'))
+
+    enseignants = Enseignant.query.all()
+
+    return render_template(
+        'admin/enseignants.html',
+        enseignants=enseignants
+    )
+
+@app.route('/admin/enseignants/modifier/<int:id>', methods=['GET', 'POST'])
+def modifier_enseignant(id):
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+
+    enseignant = Enseignant.query.get_or_404(id)
+
+    if request.method == 'POST':
+        enseignant.nom = request.form['nom']
+        enseignant.grade = request.form['grade']
+        enseignant.departement = request.form['departement']
+        enseignant.email = request.form['email']
+        enseignant.domaine = request.form['domaine']
+
+        fichier = request.files['photo']
+
+        if fichier and fichier.filename != "":
+            nom_photo = secure_filename(fichier.filename)
+
+            fichier.save(
+                os.path.join(
+                    app.config["UPLOAD_FOLDER_ENSEIGNANTS"],
+                    nom_photo
+                )
+            )
+
+            enseignant.photo = nom_photo
+
+        db.session.commit()
+
+        return redirect(url_for('admin_enseignants'))
+
+    return render_template(
+        'admin/modifier_enseignant.html',
+        enseignant=enseignant
+    )
+
+@app.route('/admin/enseignants/supprimer/<int:id>')
+def supprimer_enseignant(id):
+
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+
+    enseignant = Enseignant.query.get_or_404(id)
+
+    db.session.delete(enseignant)
+    db.session.commit()
+
+    return redirect(url_for('admin_enseignants'))
 # ---------------- PAGES PUBLIC ----------------
 
 @app.route('/')
@@ -474,6 +571,15 @@ def recherche():
         pages=pages_resultats
     )
 
+@app.route('/enseignants')
+def enseignants():
+
+    enseignants = Enseignant.query.order_by(Enseignant.nom).all()
+
+    return render_template(
+        'enseignants.html',
+        enseignants=enseignants
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)

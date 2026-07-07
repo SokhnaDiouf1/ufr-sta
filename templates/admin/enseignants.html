@@ -1,0 +1,81 @@
+{% extends "admin/base_admin.html" %}
+
+{% block content %}
+
+<h1>Gestion des enseignants</h1>
+
+<form method="POST" enctype="multipart/form-data">
+
+    <label>Nom</label><br>
+    <input type="text" name="nom" required>
+
+    <br><br>
+
+    <label>Grade</label><br>
+    <input type="text" name="grade" required>
+
+    <br><br>
+
+    <label>Département</label><br>
+    <input type="text" name="departement" required>
+
+    <br><br>
+
+    <label>Email professionnel</label><br>
+    <input type="email" name="email" required>
+
+    <br><br>
+
+    <label>Domaines de recherche</label><br>
+    <textarea name="domaine" rows="5" required></textarea>
+
+    <br><br>
+
+    <label>Photo</label><br>
+    <input type="file" name="photo" accept="image/*">
+
+    <br><br>
+
+    <button type="submit">Ajouter</button>
+
+</form>
+
+<hr>
+
+{% for enseignant in enseignants %}
+
+<div class="enseignant-admin">
+
+    {% if enseignant.photo %}
+        <img
+            src="{{ url_for('static', filename='images/enseignants/' + enseignant.photo) }}"
+            width="120">
+    {% endif %}
+
+    <h3>{{ enseignant.nom }}</h3>
+
+    <p><strong>Grade :</strong> {{ enseignant.grade }}</p>
+
+    <p><strong>Département :</strong> {{ enseignant.departement }}</p>
+
+    <p><strong>Email :</strong> {{ enseignant.email }}</p>
+
+    <p><strong>Recherche :</strong> {{ enseignant.domaine }}</p>
+
+    <a href="{{ url_for('modifier_enseignant', id=enseignant.id) }}">
+        Modifier
+    </a>
+
+    &nbsp;&nbsp;
+
+    <a href="{{ url_for('supprimer_enseignant', id=enseignant.id) }}">
+        Supprimer
+    </a>
+
+    <hr>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}

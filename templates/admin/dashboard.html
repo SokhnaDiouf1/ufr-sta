@@ -32,6 +32,14 @@
         <a href="{{ url_for('admin_formations') }}">Gérer</a>
     </div>
 
+    <div class="card">
+        <h2>Enseignants</h2>
+        <h1>{{ nb_enseignants }}</h1>
+        <a href="{{ url_for('admin_enseignants') }}">
+            Gérer les enseignants
+        </a>
+    </div>
+
 </div>
 
 {% endblock %}

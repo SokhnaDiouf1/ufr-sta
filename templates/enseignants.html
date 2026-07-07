@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Nos Enseignants{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+    <h1>Nos Enseignants</h1>
+
+    <p>
+        Découvrez l'équipe pédagogique de l'UFR Sciences et Technologies Avancées.
+    </p>
+</section>
+
+<section class="enseignants-container">
+
+{% for enseignant in enseignants %}
+
+<div class="carte-enseignant">
+
+    {% if enseignant.photo %}
+
+    <img
+        src="{{ url_for('static', filename='images/enseignants/' + enseignant.photo) }}"
+        alt="{{ enseignant.nom }}">
+
+    {% endif %}
+
+    <h2>{{ enseignant.nom }}</h2>
+
+    <p><strong>Grade :</strong> {{ enseignant.grade }}</p>
+
+    <p><strong>Département :</strong> {{ enseignant.departement }}</p>
+
+    <p><strong>Email :</strong> {{ enseignant.email }}</p>
+
+    <p><strong>Domaine de recherche :</strong></p>
+
+    <p>{{ enseignant.domaine }}</p>
+
+</div>
+
+{% endfor %}
+
+</section>
+
+{% endblock %}
