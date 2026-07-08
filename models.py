@@ -8,8 +8,19 @@ class Actualite(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     titre = db.Column(db.String(200), nullable=False)
     contenu = db.Column(db.Text, nullable=False)
-    image = db.Column(db.String(255))
+    image = db.Column(db.String(255)) # Ça reste l'image principale
     date_publication = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    # NOUVEAU : Lien vers les photos supplémentaires
+    photos = db.relationship('ImageActualite', backref='actualite', lazy=True, cascade="all, delete-orphan")
+
+# NOUVELLE TABLE pour les photos multiples
+class ImageActualite(db.Model):
+    __tablename__ = "images_actualites"
+
+    id = db.Column(db.Integer, primary_key=True)
+    nom_fichier = db.Column(db.String(255), nullable=False)
+    actualite_id = db.Column(db.Integer, db.ForeignKey('actualites.id'), nullable=False)
 
 
 class Activite(db.Model):

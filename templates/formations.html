@@ -20,8 +20,9 @@
         <div class="formation-intro-container">
             <div class="formation-objective">
                 <h3>Objectif et Parcours</h3>
-                <p>Le portail MPI propose une formation innovante et pluridisciplinaire...</p>
-                <p>L'objectif est de former des cadres capables d'accompagner...</p>
+                <p>Le portail d'entrée MPI est un tronc commun d'une durée de quatre semestres (Licence 1 et Licence 2). Il a pour objectif de doter les étudiants d'un socle scientifique solide, pluridisciplinaire et d'un niveau d'abstraction élevé. Cette formation prépare les étudiants à maîtriser les outils fondamentaux des mathématiques, de la physique et des technologies numériques, afin de faciliter leur orientation vers les spécialisations de fin de cycle Licence.</p>
+                
+                <p>À l'issue de ces quatre semestres validés, les étudiants quittent le tronc commun pour intégrer directement leur filière de spécialisation en Licence 3, détaillée ci-dessous.</p>
             </div>
             <div class="formation-image-side">
                 <img src="{{ url_for('static', filename='images/photo_mpi.jpeg') }}" alt="Filière MPI">
@@ -45,18 +46,26 @@
                     <summary>Licence en Informatique</summary>
                     <div class="spec-content">
                         <h5>À propos de la Licence Info :</h5>
-                        <p>Cette spécialisation met l'accent sur le génie logiciel, l'administration réseaux et la cybersécurité.</p>
+                        <p>La Licence Informatique de l'UFR STA forme des spécialistes capables de concevoir, développer, déployer et maintenir des systèmes informatiques, des applications et des services technologiques. Le cursus prépare activement les étudiants à répondre aux défis de la transformation numérique grâce à une expertise technique solide et une parfaite maîtrise des outils du génie logiciel.</p>
                         <h5>Poursuite d'études (Masters) :</h5>
+                        <p>Les diplômés de la Licence ont la possibilité de poursuivre leurs études universitaires en intégrant des cycles de Masters de l'UAM ou d'autres universités :</p>
                         <ul>
                             <li>Master en Génie Logiciel et Applications</li>
                             <li>Master en Science des Données (Data Science)</li>
                             <li>Master en Sécurité Informatique et Systèmes Réseaux</li>
+                            <li>Master en Réseaux</li>
+                            <li>Master en Data Science et Big Data</li>
+                            <li>Master en intelligence Artificielle</li>
                         </ul>
                         <h5>Débouchés :</h5>
+                        <p>Les diplômés s'insèrent rapidement sur le marché du travail dans les entreprises de services du numérique, les administrations publiques, les banques ou au sein des services informatiques d'institutions. Ils occupent les postes suivants :</p>
                         <ul>
                             <li>Développeur Full-Stack</li>
                             <li>Administrateur Systèmes</li>
                             <li>Expert en sécurité informatique</li>
+                            <li>Ingénieur Systèmes et Réseaux</li>
+                            <li>Architecte Réseaux et Cloud</li>
+
                         </ul>
                         <a href="{{ url_for('static', filename='maquettes/l3_info.pdf') }}" target="_blank" class="btn-pdf spec-btn">Consulter Maquette S5/S6</a>
                     </div>
@@ -66,18 +75,24 @@
                     <summary>Licence en Mathématiques et Modélisation</summary>
                     <div class="spec-content">
                         <h5>À propos de la Licence Maths :</h5>
-                        <p>Focus sur l'analyse, l'algèbre et la modélisation mathématique pour résoudre des problèmes complexes.</p>
+                        <p>Les données et la complexité des systèmes modernes exigent de nouvelles approches scientifiques. Cette licence positionne les mathématiques non plus comme une discipline purement abstraite, mais comme un moteur essentiel de l'innovation technologique. Le cursus fusionne l'excellence théorique avec la puissance du calcul informatique pour apprendre à concevoir des jumeaux numériques, optimiser des systèmes industriels et décrypter de grands volumes de données. Les étudiants y développent une agilité intellectuelle unique, combinant programmation scientifique, modélisation stochastique et analyse prédictive.</p>
                         <h5>Poursuite d'études (Masters) :</h5>
+                        <p>Après l'obtention du diplôme, les étudiants peuvent postuler aux spécialités de Masters suivantes :</p>
                         <ul>
                             <li>Master en Mathématiques Appliquées et Statistique</li>
                             <li>Master en Modélisation, Simulation et Calcul Scientifique</li>
-                            <li>Master en Science des Données (Data Science)</li>
+                            <li>Master en Algèbre et Applications Numérique</li>
+                            <li>Master en Mathématiques Financières et Actuariat</li>
                         </ul>
                         <h5>Débouchés :</h5>
+                        <p>Les diplômés s’insèrent directement sur le marché de l'emploi dans les métiers suivants :</p>
                         <ul>
                             <li>Data Analyst</li>
                             <li>Chargé d'études statistiques</li>
-                            <li>Poursuite en Master de recherche</li>
+                            <li>Ingénieur d'études en modélisation numérique</li>
+                            <li>Chargé d'études statistiques et de sondages</li>
+                            <li>Chargé d'études actuarielles en assurance</li>
+                            <li>Enseignant en mathématiques</li>
                         </ul>
 
                         <a href="{{ url_for('static', filename='maquettes/l3_maths.pdf') }}" target="_blank" class="btn-pdf spec-btn">Consulter Maquette S5/S6</a>
@@ -88,18 +103,25 @@
                     <summary>Licence en Physique et Applications</summary>
                     <div class="spec-content">
                         <h5>À propos de la Licence Physique :</h5>
-                        <p>Formation axée sur les nanosciences, les énergies renouvelables et le spatial.</p>
+                        <p>La Licence Physique et Applications de l’UFR STA dispense une formation théorique et expérimentale approfondie dans les grands domaines de la physique moderne et de ses applications technologiques. Le cursus met l'accent sur la mécanique, la thermodynamique, l'électronique, l'optique et la modélisation numérique. Elle prépare les étudiants à concevoir des solutions techniques innovantes pour l'industrie, les laboratoires de recherche et le secteur de l'énergie.</p>
                         <h5>Poursuite d'études (Masters) :</h5>
+                        <p>Après l'obtention de la Licence PA, les diplômés ont la possibilité de postuler aux Masters suivants :</p>
                         <ul>
                             <li>Master en Énergies Renouvelables et Transition Énergétique</li>
                             <li>Master en Physique des Matériaux et Nanotechnologies</li>
                             <li>Master en Électronique, Instrumentation et Systèmes Embarqués</li>
+                            <li>Master en Physique de l'Atmosphère, de l'Océan et Climatologie</li>
+                            <li>Master en Sciences et technologies Nucléaires</li>
                         </ul>
                         <h5>Débouchés :</h5>
+                        <p>Les diplômés s’insèrent directement sur le marché de l'emploi dans les métiers suivants :</p>
                         <ul>
                             <li>Technicien supérieur en énergie</li>
                             <li>Métiers du spatial et des matériaux</li>
                             <li>Ingénierie physique</li>
+                            <li>Responsable qualité en laboratoire de caractérisation des matériaux</li>
+                            <li>Technicien en métrologie, calibration et instrumentation de mesure</li>
+                            <li>Assistant de recherche en laboratoire</li>
                         </ul>
                         <a href="{{ url_for('static', filename='maquettes/l3_physique.pdf') }}" target="_blank" class="btn-pdf spec-btn">Consulter Maquette S5/S6</a>
                     </div>
@@ -120,7 +142,8 @@
         <div class="formation-intro-container">
             <div class="formation-objective">
                 <h3>Objectif et Parcours</h3>
-                <p>Cette filière a pour objectif de former des spécialistes dans les métiers de la finance...</p>
+                <p>Le portail MIASS prépare les étudiants à devenir des experts de la prise de décision en entreprise grâce à une double compétence scientifique et managériale.Durant les quatre premiers semestres (L1 et L2), les étudiants suivent des cours de mathématiques fondamentales (analyse, algèbre) et de programmation informatique directement en commun avec le portail MPI, afin d'acquérir un haut niveau en calcul et en logique. À ce socle scientifique s'ajoute l'apprentissage de matières spécifiques comme la microéconomie, la macroéconomie, la comptabilité générale et la gestion des organisations.</p>
+                <p>À l'issue de ces quatre semestres validés, la formation hybride prend fin. Les étudiants quittent le tronc commun pour intégrer directement leur filière de spécialisation en Licence 3, détaillée ci-dessous.</p>
             </div>
             <div class="formation-image-side">
                 <img src="{{ url_for('static', filename='images/photo_miass.jpeg') }}" alt="Filière MIASS">
@@ -149,23 +172,37 @@
                 </a>
 
                 <details class="spec-item">
-                    <summary>Licence en Économie et Gestion</summary>
+                    <summary>Licence Finance, Économie et Gestion</summary>
                     <div class="spec-content">
                         <p><strong>À propos de la Licence Éco-Gestion :</strong></p>
-                        <p>Cette spécialisation forme aux sciences économiques, à la gestion des organisations et à l'analyse financière des entreprises en s'appuyant sur les outils mathématiques et informatiques.</p>
+                        <p>La complexité des marchés financiers et la transformation numérique des entreprises exigent des profils capables d'allier rigueur mathématique et stratégie managériale. Cette licence rompt avec la gestion traditionnelle en mettant l'accent sur l'économie quantitative, l'analyse financière moderne et l'intégration des outils numériques de gestion. Le cursus fusionne l'excellence en modélisation mathématique avec la puissance de la business intelligence pour apprendre à évaluer les risques, piloter la performance financière et automatiser les processus comptables. Les étudiants y développent une expertise de pointe, combinant l'analyse statistique, la gestion d'actifs et la maîtrise des logiciels de gestion intégrés.</p>
                         
                         <p><strong>Poursuite d'études (Masters) :</strong></p>
+                        <p>Après l'obtention du diplôme, les étudiants peuvent postuler aux spécialités de Masters suivantes :</p>
                         <ul>
                             <li>Master en Monnaie, Banque, Finance et Assurance</li>
-                            <li>Master en Économie du Développement</li>
-                            <li>Master en Gestion des Entreprises et Management</li>
+                            <li>Master en Finance d’Entreprise et Ingénierie Financière</li>
+                            <li>Master en Audit, Contrôle de Gestion et Système d'Information</li>
+                            <li>Master en Banque, Assurance et Gestion des Risques (Risk Management)</li>
+                            <li>Master en Data Science appliquée à la Finance et à l'Économie</li>
+                            <li>Master en Actuariat et Mathématiques Financières</li>
+                            <li>Master en Économie Quantitative et Statistique Appliquée</li>
+                            <li>Master en Gestion de Projets et Management des Organisations</li>
+                            <li>Master en Commerce International et Supply Chain Management</li>
                         </ul>
 
-                        <p><strong>Débouchés :</strong></p>
+                        <p><strong>Débouchés professionnels :</strong></p>
+                        <p>Les compétences acquises permettent d'accéder directement aux métiers suivants :</p>
                         <ul>
-                            <li>Analyste Économique / Financier</li>
-                            <li>Chargé d'études de marché</li>
-                            <li>Gestionnaire de projet en entreprise ou organisation</li>
+                        
+                            <li>Analyste financier junior ou chargé d’études financières</li>
+                            <li>Contrôleur de gestion junior</li>
+                            <li>Assistant auditeur interne ou externe</li>
+                            <li>Gestionnaire de portefeuille ou conseiller en investissement</li>
+                            <li>Chargé de clientèle (Banque et Assurance)</li>
+                            <li>Data Analyst en économie ou business intelligence</li>
+                            <li>Comptable ou responsable administratif et financier</li>
+                            <li>Consultant junior en gestion d'entreprise et transformation digitale</li>
                         </ul>
                         <a href="#" class="btn-pdf spec-btn">Consulter Maquette S5/S6</a>
                     </div>
@@ -186,8 +223,9 @@
         <div class="formation-intro-container">
             <div class="formation-objective">
                 <h3>Objectif et Parcours</h3>
-                <p>Cette filière a pour objectif d’offrir aux étudiants la possibilité d’acquérir une formation...</p>
-                <p>Elle prépare les étudiants aux métiers de la protection et de l’aménagement des côtes...</p>
+                <p>Le portail d'entrée SML partage un tronc commun d'une durée de trois semestres avec la filière MPI (Mathématiques, Physique, Informatique), tout en intégrant dès la première année des matières supplémentaires spécifiques aux sciences marines et côtières. Il a pour objectif de doter les étudiants d'un socle scientifique solide et pluridisciplinaire, tout en les initiant aux outils fondamentaux de l'océanographie et de l'environnement, afin de faciliter leur orientation vers les spécialisations de fin de cycle Licence.</p>
+                
+                <p>À l'issue du semestre 3, les étudiants se détachent du tronc commun général pour poursuivre leur propre chemin pégagogique au semestre 4, avant d'intégrer directement leur filière de spécialisation en Licence 3, détaillée ci-dessous.</p>
             </div>
             <div class="formation-image-side">
                 <img src="{{ url_for('static', filename='images/photo_sml.jpeg') }}" alt="Filière SML">
@@ -208,43 +246,50 @@
             
             <div class="spec-accordion">
                 <details class="spec-item">
-                    <summary>Génie Côtier, Portuaire et Maritime</summary>
+                    <summary>Ingénierie Côtier, Portuaire et Offshore</summary>
                     <div class="spec-content">
                         <h5>À propos du domaine :</h5>
-                        <p>Focus sur la conception, la protection et l'aménagement des infrastructures littorales, ainsi que la gestion des plateformes offshores (pétrolières et gazières).</p>
-                        <h5>Débouchés :</h5>
+                        <p>Cette filière forme des techniciens supérieurs et des experts de terrain capables de concevoir des solutions face à l'érosion côtière, de gérer les infrastructures des ports et de suivre l'impact environnemental des installations pétrolières ou gazières en mer. Les enseignements se concentrent sur l'hydrodynamique marine, le génie civil côtier, la topographie et la cartographie numérique.</p>
+                        <h5>Poursuite d'études (Masters):</h5>
+                        <p>Après l'obtention du diplôme, les étudiants peuvent postuler aux Masters suivants :</p>
                         <ul>
-                            <li>Chargé de mission / ingénieur d’étude en environnement littoral</li>
-                            <li>Expert en aménagement pour les industries de la mer, collectivités territoriales et agences d'état</li>
-                            <li>Enseignant-Chercheur ou Chercheur (après poursuite d'études)</li>
+                            <li>Master en Génie Côtier et Aménagements Littoraux</li>
+                            <li>Master en Télédétection et Systèmes d'Information Géographique (SIG)</li>
+                            <li>Master en Océanographie Physique et Modélisation Numérique</li>
+                            <li>Écoles d'ingénieurs en Génie Civil ou Hydraulique</li>
+                        </ul>
+
+                        <p><strong>Débouchés :</strong></p>
+                        <p>Les compétences acquises permettent d'accéder directement aux métiers suivants :</p>
+                        <ul>
+                            <li>Conducteur de travaux ou chargé d'études en aménagements maritimes</li>
+                            <li>Technicien supérieur en suivi des infrastructures portuaires</li>
+                            <li>Opérateur de surveillance environnementale sur les plateformes offshore</li>
+                            <li>Cartographe et gestionnaire de données géographiques</li>
                         </ul>
                     </div>
                 </details>
 
                 <details class="spec-item">
-                    <summary>Biologie et Écologie Marine</summary>
+                    <summary>Économie Bleue et Écosystèmes Marins </summary>
                     <div class="spec-content">
                         <h5>À propos du domaine :</h5>
-                        <p>Étude approfondie de la biodiversité marine, de la dynamique des populations halieutiques et de la préservation des écosystèmes marins.</p>
-                        <h5>Débouchés :</h5>
+                        <p>Cette filière est dédiée à la gestion durable des ressources maritimes et à la préservation de la biodiversité aquatique. Les étudiants y apprennent à évaluer l'état de santé des écosystèmes, à analyser les impacts du changement climatique et à développer des projets durables liés à l'économie de la mer. Les cours mettent l'accent sur l'écologie marine, la chimie des eaux, l'aquaculture et la gestion des pêches.</p>
+                        <h5>Poursuite d'études (Masters):</h5>
+                        <p>Après l'obtention du diplôme, les étudiants peuvent postuler aux Masters suivants :</p>
                         <ul>
-                            <li>Chercheur en biologie et écologie marine en laboratoires institutionnels</li>
-                            <li>Chargé d'étude en conservatoires et parcs marins</li>
-                            <li>Expert pour des associations environnementales</li>
+                            <li>Master en Gestion Intégrée des Zones Côtières</li>
+                            <li>Master en Économie Bleue et Gestion des Écosystèmes Aquatiques</li>
+                            <li>Master en Aquaculture Durable et Sciences Halieutiques</li>
+                            <li>Master en Changements Climatiques et Risques Environnementaux</li>
                         </ul>
-                    </div>
-                </details>
-
-                <details class="spec-item">
-                    <summary>Économie Bleue et Résilience Climatique</summary>
-                    <div class="spec-content">
-                        <h5>À propos du domaine :</h5>
-                        <p>Analyse des impacts climatiques sur les territoires littoraux et développement de stratégies économiques durables autour des ressources maritimes.</p>
-                        <h5>Débouchés :</h5>
+                        <h5>Débouchés professionnels :</h5>
+                        <p>Les compétences acquises permettent d'accéder directement aux métiers suivants :</p>
                         <ul>
-                            <li>Consultant ou chargé d'étude en bureaux d'études</li>
-                            <li>Responsable environnement et développement d'entreprises privées</li>
-                            <li>Gestionnaire de projets pour la résilience des territoires littoraux</li>
+                            <li>Technicien en contrôle qualité de l'eau et suivi des pollutions marines</li>
+                            <li>Superviseur ou gestionnaire d’installations aquacoles</li>
+                            <li>Conseiller technique en environnement auprès des collectivités littorales</li>
+                            <li>Assistant de recherche en biologie et écologie marine</li>
                         </ul>
                     </div>
                 </details>

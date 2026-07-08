@@ -90,27 +90,39 @@ def admin_actualites():
     if request.method == 'POST':
         titre = request.form['titre']
         contenu = request.form['contenu']
-
-        fichier = request.files['image']
-
+        
+        # 1. Gestion de l'image principale
+        fichier_principal = request.files.get('image')
         nom_image = None
-
-        if fichier and fichier.filename != "":
-            nom_image = secure_filename(fichier.filename)
-            fichier.save(
-                os.path.join(app.config["UPLOAD_ACTUALITES"], nom_image)
-            )
+        if fichier_principal and fichier_principal.filename != "":
+            nom_image = secure_filename(fichier_principal.filename)
+            fichier_principal.save(os.path.join(app.config["UPLOAD_ACTUALITES"], nom_image))
 
         new = Actualite(titre=titre, contenu=contenu, image=nom_image)
         db.session.add(new)
+        db.session.flush() # Permet de récupérer le nouvel ID de l'actualité tout de suite
+
+        # 2. Gestion des photos supplémentaires multiples
+        fichiers_supp = request.files.getlist('images_supp')
+        for fichier in fichiers_supp:
+            if fichier and fichier.filename != "":
+                nom_fichier_supp = secure_filename(fichier.filename)
+                fichier.save(os.path.join(app.config["UPLOAD_ACTUALITES"], nom_fichier_supp))
+                
+                # On ajoute chaque photo dans la nouvelle table
+                nouvelle_photo = ImageActualite(nom_fichier=nom_fichier_supp, actualite_id=new.id)
+                db.session.add(nouvelle_photo)
+
         db.session.commit()
-
         flash("Actualité ajoutée avec succès.", "success")
-
         return redirect(url_for('admin_actualites'))
-
     actualites = Actualite.query.all()
-    return render_template('admin/actualites.html', actualites=actualites)
+    return render_template('admin/actualites.html' , actualites=actualites)
+    
+@app.route('/actualite/<int:id>')
+def detail_actualite(id):
+    actualite = Actualite.query.get_or_404(id)
+    return render_template('detail_actualite.html', actualite=actualite)    
 
 @app.route('/admin/activites', methods=['GET', 'POST'])
 def admin_activites():

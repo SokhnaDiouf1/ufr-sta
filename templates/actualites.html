@@ -16,22 +16,17 @@
     {% for actualite in actualites %}
 
     <div class="carte-actualite">
-
         {% if actualite.image %}
         <img src="{{ url_for('static', filename='images/actualites/' + actualite.image) }}" 
              alt="{{ actualite.titre }}">
         {% endif %}
 
         <h2>{{ actualite.titre }}</h2>
+        <p class="date">Publié le {{ actualite.date_publication.strftime('%d/%m/%Y') }}</p>
 
-        <p class="date">
-            {{ actualite.date_publication.strftime('%d/%m/%Y') }}
-        </p>
+        <p>{{ actualite.contenu | truncate(150, True, '...') }}</p>
 
-        <p>
-            {{ actualite.contenu }}
-        </p>
-
+        <a href="{{ url_for('detail_actualite', id=actualite.id) }}" class="voir-plus-link">Voir plus <i class="fas fa-arrow-right"></i></a>
     </div>
 
     {% endfor %}
