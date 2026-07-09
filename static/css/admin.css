@@ -82,3 +82,108 @@ a:hover{
         visibility:hidden;
     }
 }
+.admin-page{
+    padding:30px;
+}
+
+.page-title{
+    color:#1f3c88;
+    margin-bottom:25px;
+}
+
+.admin-card{
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    margin-bottom:35px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.admin-card h2{
+    margin-bottom:20px;
+    color:#1f3c88;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:18px;
+}
+
+.form-group label{
+    font-weight:600;
+    margin-bottom:8px;
+}
+
+.form-group input,
+.form-group textarea{
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-size:15px;
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.btn-save{
+    background:#1f3c88;
+    color:white;
+    border:none;
+    padding:12px 30px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.btn-save:hover{
+    background:#14306d;
+}
+
+.table-admin{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.table-admin th{
+    background:#1f3c88;
+    color:white;
+    padding:12px;
+}
+
+.table-admin td{
+    padding:12px;
+    border-bottom:1px solid #eee;
+}
+
+.table-admin tr:hover{
+    background:#f8f9fa;
+}
+
+.btn-edit{
+    background:#0d6efd;
+    color:white;
+    padding:8px 14px;
+    border-radius:6px;
+    text-decoration:none;
+    margin-right:8px;
+}
+
+.btn-delete{
+    background:#dc3545;
+    color:white;
+    padding:8px 14px;
+    border-radius:6px;
+    text-decoration:none;
+}
+
+.btn-edit:hover{
+    background:#0b5ed7;
+}
+
+.btn-delete:hover{
+    background:#bb2d3b;
+}

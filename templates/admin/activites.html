@@ -1,58 +1,147 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Gestion des activités</title>
-</head>
-<body>
+{% extends "admin/base_admin.html" %}
 
-<h1>Gestion des activités</h1>
+{% block title %}Gestion des activités{% endblock %}
 
-<form method="POST" enctype="multipart/form-data">
+{% block content %}
 
-    <label>Titre</label><br>
-    <input type="text" name="titre" required>
+<div class="admin-page">
 
-    <br><br>
+    <h1 class="page-title">
+        📅 Gestion des activités
+    </h1>
 
-    <label>Description</label><br>
-    <textarea name="description" rows="6" cols="60" required></textarea>
+    <div class="admin-card">
 
-    <br><br>
+        <h2>Nouvelle activité</h2>
 
-    <label>Image</label><br>
-    <input type="file" name="image" accept="image/*">
+        <form method="POST" enctype="multipart/form-data">
 
-    <br><br>
+            <div class="form-group">
+                <label>Titre</label>
+                <input type="text" name="titre" required>
+            </div>
 
-    <button type="submit">Ajouter</button>
+            <div class="form-row">
 
-</form>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" name="date" required>
+                </div>
 
-<hr>
+                <div class="form-group">
+                    <label>Lieu</label>
+                    <input type="text" name="lieu" required>
+                </div>
 
-{% for activite in activites %}
+            </div>
 
-<h3>{{ activite.titre }}</h3>
+            <div class="form-group">
+                <label>Organisateur</label>
+                <input type="text" name="organisateur" required>
+            </div>
 
-<p>{{ activite.description }}</p>
+            <div class="form-group">
+                <label>Description</label>
 
-<p>{{ activite.date_activite.strftime('%d/%m/%Y') }}</p>
-<a href="{{ url_for('modifier_activite', id=activite.id) }}">
-    Modifier
-</a>
+                <textarea
+                    name="description"
+                    rows="6"
+                    required></textarea>
+            </div>
 
-&nbsp;&nbsp;
+            <div class="form-group">
+                <label>Photos</label>
 
-<a href="{{ url_for('supprimer_activite', id=activite.id) }}">
-    Supprimer
-</a>
+                <input
+                    type="file"
+                    name="photos"
+                    multiple
+                    accept="image/*">
+            </div>
 
-<hr>
+            <button class="btn-save">
+                Publier l'activité
+            </button>
 
-<hr>
+        </form>
 
-{% endfor %}
+    </div>
 
-</body>
-</html>
+    <div class="admin-card">
+
+        <h2>Activités publiées</h2>
+
+        <table class="table-admin">
+
+            <thead>
+
+                <tr>
+                    <th>Titre</th>
+                    <th>Date</th>
+                    <th>Lieu</th>
+                    <th>Photos</th>
+                    <th>Actions</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for activite in activites %}
+
+            <tr>
+
+                <td>{{ activite.titre }}</td>
+
+                <td>{{ activite.date }}</td>
+
+                <td>{{ activite.lieu }}</td>
+
+                <td>
+
+                    {% if activite.photos %}
+
+                        {{ activite.photos|length }}
+
+                    {% else %}
+
+                        0
+
+                    {% endif %}
+
+                </td>
+
+                <td>
+
+                    <a
+                        class="btn-edit"
+                        href="{{ url_for('modifier_activite', id=activite.id) }}">
+
+                        Modifier
+
+                    </a>
+
+                    <a
+                        class="btn-delete"
+                        href="{{ url_for('supprimer_activite', id=activite.id) }}"
+                        onclick="return confirm('Supprimer cette activité ?')">
+
+                        Supprimer
+
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

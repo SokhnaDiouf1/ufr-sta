@@ -27,10 +27,31 @@ class Activite(db.Model):
     __tablename__ = "activites"
 
     id = db.Column(db.Integer, primary_key=True)
+
     titre = db.Column(db.String(200), nullable=False)
+    date = db.Column(db.String(100), nullable=False)
+    lieu = db.Column(db.String(200), nullable=False)
+    organisateur = db.Column(db.String(200), nullable=False)
     description = db.Column(db.Text, nullable=False)
-    image = db.Column(db.String(255))
-    date_activite = db.Column(db.DateTime, default=datetime.utcnow)
+
+    photos = db.relationship(
+        "PhotoActivite",
+        backref="activite",
+        cascade="all, delete",
+        lazy=True
+    )
+class PhotoActivite(db.Model):
+    __tablename__ = "photo_activites"
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    photo = db.Column(db.String(255), nullable=False)
+
+    activite_id = db.Column(
+        db.Integer,
+        db.ForeignKey("activites.id"),
+        nullable=False
+    )
 
 
 class Formation(db.Model):
@@ -85,4 +106,35 @@ class Enseignant(db.Model):
     
     biographie = db.Column(db.Text)
 
-   
+class Album(db.Model):
+    __tablename__ = "albums"
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    titre = db.Column(db.String(200), nullable=False)
+
+    description = db.Column(db.Text)
+
+    date = db.Column(db.String(100))
+
+    annee = db.Column(db.String(10))
+
+    photos = db.relationship(
+        "PhotoAlbum",
+        backref="album",
+        cascade="all, delete",
+        lazy=True
+    )
+
+class PhotoAlbum(db.Model):
+    __tablename__ = "photo_albums"
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    photo = db.Column(db.String(255), nullable=False)
+
+    album_id = db.Column(
+        db.Integer,
+        db.ForeignKey("albums.id"),
+        nullable=False
+    )

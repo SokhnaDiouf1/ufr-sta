@@ -18,8 +18,32 @@
 
     <br><br>
 
-    <label>Image</label><br>
-    <input type="file" name="image" required>
+    <label>Photos</label>
+    
+    <input
+    type="file"
+    name="photos"
+    multiple
+    accept="image/*">
+
+    <br><br>
+
+    <label>Date</label>
+    
+    <input
+    type="date"
+    name="date"
+    required>
+
+    <br><br>
+
+    <label>Année</label>
+
+    <input
+    type="text"
+    name="annee"
+    placeholder="2026"
+    required>
 
     <br><br>
 
@@ -29,23 +53,37 @@
 
 <hr>
 
-{% for photo in photos %}
-
-<h3>{{ photo.titre }}</h3>
-
-<img src="{{ url_for('static', filename='images/galerie/' + photo.image) }}"
-     width="250">
-
-<p>{{ photo.description }}</p>
-
-<a href="{{ url_for('supprimer_photo', id=photo.id) }}"
-   onclick="return confirm('Voulez-vous vraiment supprimer cette photo ?')">
-    Supprimer
-</a>
-
 <hr>
 
+{% for album in albums %}
 
+<div class="album-admin">
+
+    <h3>{{ album.titre }}</h3>
+
+    <p>{{ album.description }}</p>
+
+    <p>{{ album.date }}</p>
+
+    {% if album.photos %}
+        <img src="{{ url_for('static',
+            filename='images/galerie/' + album.photos[0].photo) }}"
+             width="250">
+    {% endif %}
+
+    <br><br>
+
+
+
+    <a class="btn-supprimer"
+       href="{{ url_for('supprimer_album', id=album.id) }}"
+       onclick="return confirm('Supprimer cet album ?');">
+        Supprimer
+    </a>
+
+</div>
+
+<hr>
 
 {% endfor %}
 

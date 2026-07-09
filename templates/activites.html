@@ -6,36 +6,89 @@
 
 <section class="page-header">
     <h1>Nos Activités</h1>
+
     <p>
-        L'UFR STA organise régulièrement des activités académiques, scientifiques et culturelles
-        afin d'enrichir la formation des étudiants.
+        L'UFR STA organise régulièrement des activités académiques,
+        scientifiques et culturelles afin d'enrichir la formation des étudiants.
     </p>
 </section>
 
 <section class="activites-container">
 
-    {% for activite in activites %}
+    {% if activites %}
 
-    <div class="carte-activite">
+        {% for activite in activites %}
 
-        {% if activite.image %}
-            <img src="{{ url_for('static', filename='images/activites/' + activite.image) }}"
-                 alt="{{ activite.titre }}">
-        {% endif %}
+        <div class="carte-activite">
 
-        <h2>{{ activite.titre }}</h2>
+            {% if activite.photos and activite.photos|length > 0 %}
 
-        <p class="date">
-            {{ activite.date_activite.strftime('%d/%m/%Y') }}
-        </p>
+                <img
+                    src="{{ url_for('static', filename='images/activites/' + activite.photos[0].photo) }}"
+                    alt="{{ activite.titre }}">
 
-        <p>
-            {{ activite.description }}
-        </p>
+            {% else %}
 
-    </div>
+                <img
+                    src="{{ url_for('static', filename='images/default-activite.jpg') }}"
+                    alt="Aucune image">
 
-    {% endfor %}
+            {% endif %}
+
+            <div class="contenu-activite">
+
+                <h2>{{ activite.titre }}</h2>
+
+                <p class="date">
+                    📅 <strong>Date :</strong> {{ activite.date }}
+                </p>
+
+                <p>
+                    📍 <strong>Lieu :</strong> {{ activite.lieu }}
+                </p>
+
+                <p>
+                    👤 <strong>Organisateur :</strong>
+                    {{ activite.organisateur }}
+                </p>
+
+                <p class="description">
+
+                    {% if activite.description|length > 180 %}
+                        {{ activite.description[:180] }}...
+                    {% else %}
+                        {{ activite.description }}
+                    {% endif %}
+
+                </p>
+
+                <a
+                    href="{{ url_for('voirplus_activite', id=activite.id) }}"
+                    class="btn-profil">
+
+                    Voir plus →
+
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="aucune-activite">
+
+            <h2>Aucune activité disponible</h2>
+
+            <p>
+                Les prochaines activités de l'UFR STA seront publiées prochainement.
+            </p>
+
+        </div>
+
+    {% endif %}
 
 </section>
 

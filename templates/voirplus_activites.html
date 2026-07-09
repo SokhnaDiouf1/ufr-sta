@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}{{ activite.titre }}{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+    <h1>{{ activite.titre }}</h1>
+    <p>Découvrez les détails de cette activité organisée par l'UFR STA.</p>
+</section>
+
+<section class="detail-activite">
+
+    <div class="infos-activite">
+
+        <h2>{{ activite.titre }}</h2>
+
+        <p>
+            <strong>📅 Date :</strong>
+            {{ activite.date }}
+        </p>
+
+        <p>
+            <strong>📍 Lieu :</strong>
+            {{ activite.lieu }}
+        </p>
+
+        <p>
+            <strong>👤 Organisateur :</strong>
+            {{ activite.organisateur }}
+        </p>
+
+        <hr>
+
+        <h3>Description</h3>
+
+        <p class="description-complete">
+            {{ activite.description }}
+        </p>
+
+    </div>
+
+    {% if activite.photos %}
+
+    <div class="galerie-detail">
+
+        <h3>Galerie photos</h3>
+
+        <div class="galerie-grid">
+
+            {% for photo in activite.photos %}
+
+            <img
+                src="{{ url_for('static', filename='images/activites/' + photo.photo) }}"
+                alt="{{ activite.titre }}">
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+    <div class="retour-page">
+
+        <a href="{{ url_for('activites') }}" class="btn-profil">
+            ← Retour aux activités
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

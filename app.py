@@ -126,106 +126,144 @@ def detail_actualite(id):
 
 @app.route('/admin/activites', methods=['GET', 'POST'])
 def admin_activites():
+
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
 
     if request.method == 'POST':
-        titre = request.form['titre']
-        description = request.form['description']
-
-        fichier = request.files['image']
-
-        nom_image = None
-
-        if fichier and fichier.filename != "":
-            nom_image = secure_filename(fichier.filename)
-            fichier.save(
-                os.path.join(app.config["UPLOAD_ACTIVITES"], nom_image)
-            )
 
         activite = Activite(
-            titre=titre,
-            description=description,
-            image=nom_image
+            titre=request.form["titre"],
+            date=request.form["date"],
+            lieu=request.form["lieu"],
+            organisateur=request.form["organisateur"],
+            description=request.form["description"]
         )
 
         db.session.add(activite)
         db.session.commit()
+
+        photos = request.files.getlist("photos")
+
+        for fichier in photos:
+
+            if fichier.filename != "":
+
+                nom = secure_filename(fichier.filename)
+
+                fichier.save(
+                    os.path.join(
+                        app.config["UPLOAD_ACTIVITES"],
+                        nom
+                    )
+                )
+
+                photo = PhotoActivite(
+                    photo=nom,
+                    activite_id=activite.id
+                )
+
+                db.session.add(photo)
+
+        db.session.commit()
+
         flash("Activité ajoutée avec succès.", "success")
 
-        return redirect(url_for('admin_activites'))
+        return redirect(url_for("admin_activites"))
 
     activites = Activite.query.order_by(
-        Activite.date_activite.desc()
+        Activite.id.desc()
     ).all()
 
     return render_template(
-        'admin/activites.html',
+        "admin/activites.html",
         activites=activites
     )
 
-
-@app.route('/admin/galerie', methods=['GET', 'POST'])
+@app.route("/admin/galerie", methods=["GET","POST"])
 def admin_galerie():
-    if not session.get('admin'):
-        return redirect(url_for('admin_login'))
 
-    if request.method == 'POST':
-        titre = request.form['titre']
-        description = request.form['description']
+    if not session.get("admin"):
+        return redirect(url_for("admin_login"))
 
-        fichier = request.files['image']
+    if request.method=="POST":
 
-        nom_image = None
+        album = Album(
 
-        if fichier and fichier.filename != "":
-            nom_image = secure_filename(fichier.filename)
+            titre=request.form["titre"],
 
-            fichier.save(
-                os.path.join(
-                    app.config["UPLOAD_GALERIE"],
-                    nom_image
-                )
-            )
+            description=request.form["description"],
 
-        photo = Galerie(
-            titre=titre,
-            description=description,
-            image=nom_image
+            date=request.form["date"],
+
+            annee=request.form["annee"]
+
         )
 
-        db.session.add(photo)
+        db.session.add(album)
+
         db.session.commit()
-        flash("Photo ajoutée avec succès.", "success")
 
-        return redirect(url_for('admin_galerie'))
+        photos=request.files.getlist("photos")
 
-    photos = Galerie.query.all()
+        for fichier in photos:
+
+            if fichier.filename!="":
+
+                nom=secure_filename(fichier.filename)
+
+                fichier.save(
+
+                    os.path.join(
+
+                        app.config["UPLOAD_GALERIE"],
+
+                        nom
+
+                    )
+
+                )
+
+                photo=PhotoAlbum(
+
+                    photo=nom,
+
+                    album_id=album.id
+
+                )
+
+                db.session.add(photo)
+
+        db.session.commit()
+
+        flash("Album ajouté.")
+
+        return redirect(url_for("admin_galerie"))
+
+    albums=Album.query.order_by(Album.id.desc()).all()
 
     return render_template(
-        'admin/galerie.html',
-        photos=photos
+
+        "admin/galerie.html",
+
+        albums=albums
+
     )
 
-@app.route('/admin/galerie/supprimer/<int:id>')
-def supprimer_photo(id):
-    if not session.get('admin'):
-        return redirect(url_for('admin_login'))
+@app.route("/admin/album/supprimer/<int:id>")
+def supprimer_album(id):
 
-    photo = Galerie.query.get_or_404(id)
+    if not session.get("admin"):
+        return redirect(url_for("admin_login"))
 
-    # Supprimer le fichier image du dossier
-    chemin = os.path.join(app.config["UPLOAD_GALERIE"], photo.image)
+    album = Album.query.get_or_404(id)
 
-    if os.path.exists(chemin):
-        os.remove(chemin)
-
-    # Supprimer l'enregistrement de la base
-    db.session.delete(photo)
+    db.session.delete(album)
     db.session.commit()
-    flash("Photo supprimée avec succès.", "success")
 
-    return redirect(url_for('admin_galerie'))
+    flash("Album supprimé avec succès.", "success")
+
+    return redirect(url_for("admin_galerie"))
 
 @app.route('/admin/formations', methods=['GET', 'POST'])
 def admin_formations():
@@ -498,22 +536,49 @@ def actualites():
 
 @app.route('/activites')
 def activites():
+
     activites = Activite.query.order_by(
-        Activite.date_activite.desc()
+        Activite.id.desc()
     ).all()
 
     return render_template(
-        'activites.html',
+        "activites.html",
         activites=activites
     )
 
-@app.route('/galerie')
-def galerie():
-    photos = Galerie.query.all()
+@app.route('/activite/<int:id>')
+def voirplus_activite(id):
+
+    activite = Activite.query.get_or_404(id)
 
     return render_template(
-        'galerie.html',
-        photos=photos
+        "voirplus_activites.html",
+        activite=activite
+    )
+
+@app.route("/galerie")
+def galerie():
+
+    albums = Album.query.order_by(
+        Album.id.desc()
+    ).all()
+
+    return render_template(
+        "galerie.html",
+        albums=albums
+    )
+
+@app.route("/album/<int:id>")
+def voir_album(id):
+
+    album=Album.query.get_or_404(id)
+
+    return render_template(
+
+        "voir_album.html",
+
+        album=album
+
     )
 
 @app.route('/contact')

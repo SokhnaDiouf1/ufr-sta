@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}{{ album.titre }}{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+    <h1>{{ album.titre }}</h1>
+    <p>{{ album.description }}</p>
+
+    <p class="album-date">
+        📅 {{ album.date }}
+    </p>
+</section>
+
+<section class="album-container">
+
+    <div class="album-photos">
+
+        {% for photo in album.photos %}
+
+        <div class="album-photo">
+
+            <img
+                src="{{ url_for('static', filename='images/galerie/' + photo.photo) }}"
+                alt="{{ album.titre }}">
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}
