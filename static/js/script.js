@@ -92,23 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
-    /* --- 3. BARRE DE RECHERCHE --- */
-    const searchBtn = document.getElementById("search-btn");
-    const searchForm = document.getElementById("search-form");
-    const searchContainer = document.querySelector(".search-container");
-
-    if (searchBtn && searchForm) {
-        searchBtn.addEventListener("click", function(){
-            searchForm.classList.toggle("show");
-        });
-
-        document.addEventListener("click", function(e){
-            if(searchContainer && !searchContainer.contains(e.target)){
-                searchForm.classList.remove("show");
-            }
-        });
-    }
-
 //index.html
 /* ================================================================= */
     /* --- ANIMATIONS SPÉCIFIQUES À LA PAGE D'ACCUEIL (index.html) ---   */
@@ -173,4 +156,56 @@ document.addEventListener('DOMContentLoaded', function() {
         carousel.addEventListener('mouseenter', () => isScrolling = false);
         carousel.addEventListener('mouseleave', () => isScrolling = true);
     }
+
+
+
+   
+    // On récupère le bouton hamburger et le menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    // Si les deux existent bien sur la page
+    if (menuToggle && navLinks) {
+        // Quand on clique sur le bouton...
+        menuToggle.addEventListener('click', function() {
+            // ...ça ajoute ou enlève la classe "active" qui affiche le menu
+            navLinks.classList.toggle('active');
+        });
+    }
+    
+    /* --- 3. BARRE DE RECHERCHE --- */
+    const searchBtn = document.getElementById("search-btn");
+    const searchForm = document.getElementById("search-form");
+    const searchContainer = document.querySelector(".search-container");
+
+    if (searchBtn && searchForm) {
+        searchBtn.addEventListener("click", function(e){
+            e.preventDefault();  // Empêche tout rechargement bizarre
+            e.stopPropagation(); // Bloque la fermeture immédiate du menu
+            searchForm.classList.toggle("show");
+        });
+
+        document.addEventListener("click", function(e){
+            if(searchContainer && !searchContainer.contains(e.target)){
+                searchForm.classList.remove("show");
+            }
+        });
+    }
+
+    /* --- 5. SOUS-MENUS MOBILE (DROPDOWN) --- */
+    // On cible toutes les petites flèches vers le bas
+    const dropdownIcons = document.querySelectorAll('.dropdown .fa-chevron-down');
+
+    dropdownIcons.forEach(icon => {
+        icon.addEventListener('click', function(e) {
+            // Uniquement si on est sur un écran mobile
+            if (window.innerWidth <= 1024) {
+                e.preventDefault(); // On empêche la flèche de nous rediriger de page
+                
+                // On trouve le parent principal <li> pour lui ajouter la classe 'open'
+                const parentDropdown = this.closest('.dropdown');
+                parentDropdown.classList.toggle('open');
+            }
+        });
+    });
 });

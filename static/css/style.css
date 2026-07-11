@@ -1,3 +1,9 @@
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* --- 1. RÉINITIALISATION ET VARIABLES --- */
 :root {
     --bleu-uam: #0088cc; /* Un bleu cyan technologique (à ajuster selon ton logo) */
@@ -659,7 +665,8 @@ header.scrolled .logo {
 
 .directeur-photo img {
     width: 100%;
-    height: auto;
+    height: 400px;
+    object-fit: cover;
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
@@ -1344,6 +1351,45 @@ header.scrolled .logo {
     }
 }
 
+/* Affinage des textes sur petit mobile (page Départements) */
+@media (max-width: 600px) {
+    .dept-content {
+        padding: 25px 20px;
+    }
+    .dept-card h2 {
+        font-size: 22px;
+    }
+    .dept-card h3 {
+        font-size: 15px;
+    }
+    .dept-description {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+    .dept-tag {
+        font-size: 10px;
+        padding: 4px 10px;
+    }
+    .filiere-badge {
+        font-size: 13px;
+        padding: 5px 10px;
+    }
+    .dept-contact-card {
+        padding: 12px 15px;
+    }
+    .contact-label {
+        white-space: normal; /* Autorise le retour à la ligne au lieu de déborder */
+        font-size: 11px;
+    }
+    .contact-name {
+        white-space: normal;
+    }
+    .contact-email a {
+        white-space: normal;
+        word-break: break-word; /* Coupe l'email si besoin plutôt que déborder */
+    }
+}
+
 /* ==========================================================================
    PAGE FORMATIONS
    ========================================================================== */
@@ -1455,6 +1501,20 @@ header.scrolled .logo {
 .btn-pdf:hover {
     background-color: var(--marron-uam);
     color: #fff;
+}
+
+/* Badge "Bientôt disponible" pour les maquettes pas encore prêtes */
+/* (span, pas un lien : rien ne se passe au clic, pas de page cassée) */
+.btn-pdf-disabled {
+    background-color: #e2e8f0;
+    color: #718096;
+    cursor: not-allowed;
+    font-style: italic;
+}
+
+.btn-pdf-disabled:hover {
+    background-color: #e2e8f0; /* Pas d'effet hover, contrairement au vrai bouton */
+    color: #718096;
 }
 
 /* 5. Système d'accordéon pour les spécialités L3 */
@@ -1732,10 +1792,63 @@ header.scrolled .logo {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Optionnel : ajoute une lègere ombre sous la photo */
 }
 
-/* 5. Mode Téléphone : remet l'image sous le texte si l'écran est trop petit */
-@media (max-width: 768px) {
+/* 5. Mode Téléphone + Tablette : remet l'image sous le texte. */
+/* La colonne de texte devient vite trop étroite pour un contenu aussi long dès qu'on quitte le desktop */
+@media (max-width: 1024px) {
     .formation-intro-container {
         flex-direction: column;
+    }
+    .formation-image-side img {
+        height: auto; /* "height:100%" copiait la hauteur d'une colonne qui n'existe plus en mode empilé */
+        /* Pas de max-height ici : avec object-fit:cover ça recadrait/coupait la photo. */
+        /* On laisse l'image garder ses proportions naturelles, en entier. */
+    }
+}
+
+/* Affinage mobile de la page Formations */
+@media (max-width: 600px) {
+    .formation-card {
+        padding: 25px 18px;
+    }
+    .formation-header h2 {
+        font-size: 20px;
+    }
+    .formation-badges {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .badge {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    .spec-item summary {
+        align-items: flex-start; /* Le "+" reste collé en haut, même si le titre passe sur 2 lignes */
+        gap: 10px;
+        font-size: 15px;
+    }
+    .spec-item summary::after {
+        flex-shrink: 0; /* Empêche le "+" d'être compressé ou renvoyé à la ligne suivante */
+        line-height: 1.4;
+    }
+    .spec-item-link {
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .spec-item-link::after {
+        flex-shrink: 0;
+        line-height: 1.4;
+    }
+    .admissions-table-container {
+        padding: 20px 15px;
+    }
+    /* Le tableau reste un vrai tableau, juste réduit pour tenir dans l'écran */
+    /* (width:100% + pas de min-width => les cellules se contractent et le texte passe à la ligne) */
+    .ufr-table th, .ufr-table td {
+        padding: 8px 6px;
+        font-size: 12px;
+    }
+    .ufr-table th {
+        font-size: 11px;
     }
 }
 
@@ -1875,6 +1988,31 @@ header.scrolled .logo {
     text-align:center;
     padding:15px;
     color:var(--bleu-uam);
+}
+
+/* Galerie de la page détail actualité (le style inline utilisait minmax(400px,1fr), */
+/* ce qui provoquait un débordement horizontal sur TOUS les téléphones) */
+@media (max-width: 700px) {
+    .galerie-actualite-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .galerie-actualite-img {
+        height: 220px !important;
+    }
+}
+@media (min-width: 701px) and (max-width: 1024px) {
+    .galerie-actualite-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+    }
+}
+
+/* Sécurité sur très petits écrans pour les grilles actualités/activités */
+@media (max-width: 400px) {
+    .actualites-container,
+    .activites-container,
+    .activites {
+        grid-template-columns: 1fr !important;
+    }
 }
 
 /* Contact */
@@ -2739,4 +2877,633 @@ header.scrolled .logo {
 .album-date{
     color:#8B5E3C;
     font-weight:600;
+}
+
+/*==========================================================================
+   --- RESPONSIVE GLOBAL (ORDINATEUR, TABLETTE, MOBILE) ---
+========================================================================== */
+/* ==========================================================================
+   1. VERSION MOBILE UNIQUEMENT (Écrans jusqu'à 768px)
+========================================================================== */
+
+/* Cacher le bouton hamburger sur tout ce qui n'est PAS un téléphone */
+@media (min-width: 1025px) {
+    .menu-toggle { display: none; }
+}
+/* Règles pour les téléphones */
+@media (max-width: 768px) {
+    
+    /* --- HEADER & NAVIGATION --- */
+    .top-bar { display: none !important; }
+
+    .main-nav {
+        padding: 10px 15px !important;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+
+    .logo-container {
+        order: 1 !important;
+        flex: 1 !important;
+        display: flex !important;
+        align-items: center !important;
+        min-width: 0 !important;
+    }
+
+    .logo-text { max-width: 160px !important; }
+    .ufr-full-name { font-size: 10px !important; line-height: 1.2 !important; }
+    .logo { height: 50px !important; }
+
+    
+    
+    /* --- BARRE DE RECHERCHE MOBILE --- */
+    .search-container {
+        order: 2 !important;
+        margin: 0 18px 0 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        position: relative !important;
+        z-index: 9999 !important; /* Indispensable : force la loupe à passer au-dessus de tout pour qu'on puisse cliquer */
+    }
+
+    /* On cache le formulaire (la boîte) par défaut, pas juste l'input */
+    #search-form {
+        display: none !important;
+    }
+
+    /* Quand on clique, on affiche la boîte sous la loupe */
+    #search-form.show {
+        display: flex !important;
+        position: absolute !important;
+        top: 100% !important; /* S'accroche juste en dessous de la loupe */
+        right: 0 !important;
+        background-color: white !important;
+        padding: 10px !important;
+        border-radius: 5px !important;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+    }
+
+    /* On s'assure que le champ de texte à l'intérieur est bien visible */
+    .search-container input,
+    #search-form.show input {
+        display: block !important;
+        width: 150px !important;
+        padding: 8px !important;
+        border: 1px solid #ccc !important;
+        border-radius: 4px !important;
+    }
+    .menu-toggle {
+        order: 3 !important;
+        display: block !important;
+        margin: 0 !important;
+        font-size: 24px !important;
+        color: var(--bleu-uam) !important;
+        cursor: pointer !important;
+    }
+
+    .nav-links {
+        order: 4 !important;
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: white;
+        padding: 15px 0;
+        gap: 15px;
+        text-align: center;
+        margin-top: 10px !important;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+    }
+
+    .nav-links.active { display: flex !important; }
+
+    /* --- HERO SLIDER (Boîte remontée pour mobile) --- */
+    .slider-innovant { height: 480px; }
+    
+    .slider-innovant .slide .texte-box,
+    .slider-innovant .slide:nth-of-type(1) .texte-box,
+    .slider-innovant .slide:nth-of-type(2) .texte-box,
+    .slider-innovant .slide:nth-of-type(3) .texte-box {
+        width: 85%;
+        padding: 20px;
+        top: 10px !important; /* Calé en haut */
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        border-left: none;
+        border-bottom: 6px solid var(--bleu-uam);
+    }
+    
+    .texte-box h2 { font-size: 24px; }
+    .texte-box h3 { font-size: 16px; }
+    .texte-box p { font-size: 14px; }
+
+    /* --- PRESENTATION & CHIFFRES --- */
+    .presentation-top { flex-direction: column; align-items: center; }
+    .top-gauche { flex-direction: column; text-align: center; gap: 15px; }
+    .petite-photo { width: 100%; max-width: 350px; height: auto; }
+    .presentation-bottom p, .top-droite p { text-align: left; }
+    .chiffres-container { flex-wrap: wrap; gap: 20px; display: flex; justify-content: center !important; }
+    .chiffre-box { flex: 1 1 40% !important; max-width: 45% !important; margin: 0 !important;} /* 1 seul chiffre par ligne */
+    .chiffres-parallax {
+        padding: 40px 15px !important;
+        background-attachment: scroll !important; /* C'est ça qui répare la photo ! */
+        background-position: center !important;
+        background-size: cover !important;
+    }
+
+    /* --- IMAGES SUPERPOSÉES --- */
+    .ufr-presentation-split {
+        flex-direction: column !important;
+        gap: 0px !important;
+        padding-top: 10px;
+    }
+
+    .ufr-images {
+        width: 100% !important;
+        margin-top: 45px;
+        min-height: 200px !important;
+        margin-bottom: 10px !important;
+        position: relative !important;
+    }
+
+    .img-back { width: 75% !important; top: 0 !important; left: 0 !important; }
+    .img-front { width: 70% !important; bottom: 0 !important; right: 0 !important; top: auto !important; transform: translateY(60px);}
+
+    /* --- RÉDUCTION DES TITRES (Mobile) --- */
+    .presentation-section .titre-principal,
+    .mot-directeur-section .titre-principal,
+    .actualites-section .titre-actualites {
+        font-size: 22px !important;
+        line-height: 1.2 !important;
+    }
+    /* --- MOT DU DIRECTEUR (Mobile) --- */
+    .mot-directeur-container {
+        display: flex !important;
+        flex-direction: column !important; /* Empile la photo en haut, le texte en bas */
+        align-items: center !important;
+        gap: 20px !important; /* Espace propre entre la photo et le texte */
+        padding: 0 15px !important;
+    }
+
+    .directeur-photo {
+        width: 100% !important;
+        max-width: 300px !important; /* Empêche la photo de prendre tout l'écran */
+        margin: 0 auto !important;
+    }
+
+    .directeur-photo img {
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 10px !important; /* Petit effet d'arrondi joli sur mobile */
+    }
+
+    .directeur-texte {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; /* Centre le nom par rapport à la photo */
+    }
+
+    .cadre-nom-directeur {
+        margin-bottom: 15px !important;
+        text-align: center !important;
+        padding: 10px;
+    }
+    .cadre-nom-directeur h3{
+        font-size: 16px;
+        margin:0;
+    }
+
+    .directeur-contenu p {
+        text-align: left !important; /* Le texte long reste lisible */
+    }
+    
+    /* On réduit aussi légèrement le petit texte "À la une" au-dessus du fil d'actualité */
+    .actualites-section .sur-titre {
+        font-size: 14px !important;
+        margin-bottom: 5px !important;
+    }
+
+    /* --- MENU HAMBURGER (Mobile) --- */
+    /* 1. On cache le menu classique et on le prépare en mode déroulant */
+    .nav-links {
+        display: none; 
+        position: absolute;
+        top: 100%; /* S'accroche juste sous la barre de navigation */
+        left: 0;
+        width: 100%;
+        background-color: white; /* Fond blanc pour cacher le reste du site */
+        flex-direction: column; /* Empile les liens de haut en bas */
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        padding: 15px 0;
+        z-index: 1000;
+    }
+
+    /* 2. On affiche le menu uniquement quand on a cliqué sur le hamburger (classe active) */
+    .nav-links.active {
+        display: flex !important;
+    }
+
+    /* 3. On centre les liens pour que ce soit joli sur téléphone */
+    .nav-links a {
+        padding: 12px 20px;
+        text-align: center;
+        display: block;
+    }
+
+    /* --- GESTION DES SOUS-MENUS (DROPDOWN) MOBILE --- */
+    /* Par défaut, on cache les sous-menus sur téléphone */
+    .dropdown .dropdown-menu {
+        display: none !important;
+        flex-direction: column;
+        background-color: #f1f4f9; /* Un fond légèrement grisé pour les différencier */
+        padding: 5px 0;
+        margin-top: 5px;
+        border-radius: 5px;
+    }
+
+    /* Quand le JS ajoute la classe 'open', on l'affiche */
+    .dropdown.open .dropdown-menu {
+        display: flex !important;
+    }
+
+    /* On agrandit un peu la zone de clic pour la flèche sur mobile */
+    .dropdown i.fa-chevron-down {
+        padding: 10px;
+        margin-left: 10px;
+        cursor: pointer;
+        background-color: rgba(0, 51, 102, 0.05); /* Petit fond bleu clair pour montrer que c'est cliquable */
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+    }
+
+    /* Animation bonus : on tourne la flèche quand c'est ouvert */
+    .dropdown.open i.fa-chevron-down {
+        transform: rotate(180deg);
+    }
+    
+    /* --- RÉDUCTION SIMPLE DU SLIDER (Mobile) --- */
+    .slider-innovant { 
+        height: 380px !important; /* On réduit la hauteur globale pour mobile */
+        width: 100% !important;
+    }
+    
+    .slider-innovant .slide {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    /* On réduit juste la taille et les espaces de la boîte bordeaux */
+    .slider-innovant .texte-box {
+        width: 85% !important; /* Prend moins de place en largeur */
+        max-width: 320px !important;
+        padding: 15px !important; /* Moins de vide autour du texte */
+        top: 15% !important; /* Remonte un peu pour laisser voir l'image dessous */
+    }
+    
+    .slider-innovant .texte-box h2 { 
+        font-size: 18px !important; 
+        margin-bottom: 5px !important; 
+    }
+    .slider-innovant .texte-box h3 { 
+        font-size: 14px !important; 
+        margin-bottom: 5px !important; 
+    }
+    .slider-innovant .texte-box p { 
+        font-size: 12px !important; 
+        line-height: 1.3 !important; 
+    }
+
+    /* On réduit l'image pour qu'elle reste en fond sans casser l'animation */
+    .slider-innovant .image-box {
+        width: 100% !important;
+        height: 100% !important;
+    }
+    
+    .slider-innovant .image-box img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important; /* L'image s'ajuste à la nouvelle hauteur réduite */
+    }
+    
+}
+
+
+/* Règles pour les tablettes */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    /* --- HEADER & NAVIGATION --- */
+    .top-bar { display: none !important; }
+
+    .main-nav {
+        padding: 15px 25px !important; /* Un peu plus d'espace que les 10px 15px du mobile */
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+
+    .logo-container {
+        order: 1 !important;
+        flex: 1 !important;
+        display: flex !important;
+        align-items: center !important;
+        min-width: 0 !important;
+    }
+
+    .logo-text { max-width: 220px !important; } /* Agrandit (160px sur mobile) */
+    .ufr-full-name { font-size: 13px !important; line-height: 1.2 !important; } /* Agrandit (10px sur mobile) */
+    .logo { height: 65px !important; } /* Agrandit (50px sur mobile) */
+
+    /* --- BARRE DE RECHERCHE TABLETTE --- */
+    .search-container {
+        order: 2 !important;
+        margin: 0 25px 0 0 !important; /* Un peu plus d'espace sur tablette (18px sur mobile) */
+        display: flex !important;
+        align-items: center !important;
+        position: relative !important;
+        z-index: 9999 !important; /* Indispensable : force la loupe à passer... */
+    }
+
+    /* On cache le formulaire (la boîte) par défaut, pas juste l'input */
+    #search-form {
+        display: none !important;
+    }
+
+    /* Quand on clique, on affiche la boîte sous la loupe */
+    #search-form.show {
+        display: flex !important;
+        position: absolute !important;
+        top: 100% !important; /* S'accroche juste en dessous de la loupe */
+        right: 0 !important;
+        background-color: white !important;
+        padding: 12px !important; /* Légèrement plus aéré pour la tablette (10px sur mobile) */
+        border-radius: 5px !important;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+    }
+
+    /* On s'assure que le champ de texte à l'intérieur est bien visible (la suite qui est coupée en bas de ta photo) */
+    .search-container input,
+    #search-form.show input {
+        display: block !important;
+        width: 190px !important; /* La barre est plus large que sur mobile (150px) */
+        padding: 10px !important; /* Un poil plus confortable au toucher */
+        border: 1px solid #ccc !important;
+        border-radius: 4px !important;
+    }
+
+    /* --- MENU HAMBURGER & LIENS --- */
+    .menu-toggle {
+        order: 3 !important;
+        display: block !important;
+        margin: 0 !important;
+        font-size: 30px !important; /* Agrandit l'icône du menu hamburger (24px sur mobile) */
+        color: var(--bleu-uam) !important;
+        cursor: pointer !important;
+    }
+
+    .nav-links {
+        order: 4 !important;
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: white;
+        padding: 20px 0; /* Plus d'espace à l'intérieur (15px sur mobile) */
+        gap: 20px; /* Liens plus espacés (15px sur mobile) */
+        text-align: center;
+        margin-top: 15px !important; /* Marge un peu plus grande (10px sur mobile) */
+        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+    }
+
+    .nav-links.active { display: flex !important; }
+
+    /* --- HERO SLIDER --- */
+    .slider-innovant { height: 550px; } /* Le grand slider devient plus haut (480px sur mobile) */
+
+    /* --- SUITE DU SLIDER --- */
+    .slider-innovant .slide .texte-box,
+    .slider-innovant .slide:nth-of-type(1) .texte-box,
+    .slider-innovant .slide:nth-of-type(2) .texte-box,
+    .slider-innovant .slide:nth-of-type(3) .texte-box {
+        width: 80%; /* Un peu plus adapté à l'écran tablette (85% sur mobile) */
+        padding: 30px; /* Plus d'espace à l'intérieur (20px sur mobile) */
+        top: 20px !important; /* Un peu plus descendu (10px sur mobile) */
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        border-left: none;
+        border-bottom: 8px solid var(--bleu-uam); /* Trait un peu plus épais */
+    }
+
+    .texte-box h2 { font-size: 32px; } /* Agrandit (24px sur mobile) */
+    .texte-box h3 { font-size: 20px; } /* Agrandit (16px sur mobile) */
+    .texte-box p { font-size: 16px; }  /* Agrandit (14px sur mobile) */
+
+    /* --- PRESENTATION & CHIFFRES --- */
+    .presentation-top { flex-direction: column; align-items: center; }
+    .top-gauche { flex-direction: column; text-align: center; gap: 20px; } /* Plus d'espace entre les éléments (15px sur mobile) */
+    
+    /* 💥 C'EST ICI QUE TA PHOTO S'AGRANDIT ENFIN ! */
+    .petite-photo { 
+        width: 100%; 
+        max-width: 650px; /* On double presque la taille limite (350px sur mobile) ! */
+        height: auto; 
+    }
+    
+    .presentation-bottom p, .top-droite p { 
+        text-align: left; 
+        font-size: 16px; /* Police un peu plus grande sur tablette */
+    }
+    
+    .chiffres-container { 
+        flex-wrap: wrap; 
+        gap: 30px; /* On espace plus les chiffres (20px sur mobile) */
+        display: flex; 
+        justify-content: center !important; 
+    }
+    
+    .chiffre-box { 
+        flex: 1 1 40% !important; 
+        max-width: 45% !important; 
+        margin: 0 !important; 
+    }
+    
+    .chiffres-parallax {
+        padding: 60px 25px !important; /* Section plus aérée (40px 15px sur mobile) */
+        background-attachment: scroll !important; /* C'est ça qui répare la photo ! */
+    }
+
+    /* --- IMAGES SUPERPOSÉES (SECTION SPLIT) --- */
+    .ufr-presentation-split {
+        flex-direction: column !important; /* On garde l'empilement du mobile */
+        gap: 0px !important;
+        padding-top: 20px !important; /* Un peu plus aéré (10px sur mobile) */
+    }
+
+    .ufr-images {
+        width: 100% !important;
+        margin-top: 55px !important;
+        min-height: unset !important; /* On ne dépend plus d'une hauteur fixe */
+        height: auto !important;
+        margin-bottom: 20px !important;
+        position: static !important;
+        overflow: visible !important;
+    }
+
+    /* On sort les images du positionnement absolu : elles s'empilent simplement, */
+    /* impossible qu'elles débordent ou chevauchent le header sur tablette */
+    .image-wrapper {
+        position: static !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+    }
+
+    .img-back,
+    .img-front {
+        position: static !important; /* Plus d'absolute = plus de débordement possible */
+        width: 85% !important;
+        max-width: 500px !important;
+        height: 260px !important;
+        object-fit: cover !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: none !important; /* On annule le translateY hérité du desktop */
+        margin: 0 !important;
+    }
+
+    /* --- RÉDUCTION DES TITRES (Tablette) --- */
+    .presentation-section .titre-principal,
+    .mot-directeur-section .titre-principal,
+    .actualites-section .titre-actualites {
+        font-size: 52px !important; /* Titres bien plus grands (22px sur mobile) */
+        line-height: 1.2 !important;
+    }
+
+    /* --- MOT DU DIRECTEUR (Tablette) --- */
+    .mot-directeur-section {
+        padding: 60px 5% !important;
+    }
+
+    .mot-directeur-container {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 30px !important;
+    }
+
+    .directeur-photo {
+        max-width: 320px !important;
+        margin: 0 auto !important;
+    }
+
+    .directeur-photo img {
+        height: 320px !important;
+    }
+
+    .cadre-nom-directeur {
+        margin: 0 auto 20px !important;
+    }
+
+    .directeur-contenu p,
+    .directeur-contenu li {
+        text-align: left !important;
+        font-size: 16px !important;
+    }
+
+    /* --- ACTUALITÉS / CARROUSEL (Tablette) --- */
+    .actualites-section {
+        padding: 60px 5% !important;
+    }
+
+    .titre-actualites {
+        font-size: 34px !important;
+    }
+
+    .carte-actu {
+        flex: 0 0 calc(50% - 15px) !important; /* 2 cartes visibles sur tablette */
+    }
+
+    .image-actu-wrapper {
+        height: 180px !important;
+    }
+
+    .contenu-actu h3 {
+        font-size: 16px !important;
+        min-height: 65px !important;
+    }
+
+    /* --- FOOTER (Tablette) --- */
+    .footer-sta {
+        padding: 50px 6% 20px 6% !important;
+    }
+
+    .footer-sta-container {
+        flex-wrap: wrap !important;
+        justify-content: space-between !important;
+        gap: 35px !important;
+    }
+
+    .footer-colonne {
+        flex: 1 1 45% !important; /* 2 colonnes par ligne au lieu de 4 en ligne */
+        min-width: 220px !important;
+    }
+
+    .brand-col {
+        flex: 1 1 100% !important; /* La colonne marque prend toute la largeur en premier */
+    }
+
+    /* --- PAGE DÉPARTEMENTS (Tablette) --- */
+    .page-header h1 {
+        font-size: 38px !important;
+    }
+
+    .dept-content {
+        padding: 32px !important;
+    }
+
+    .dept-card h2 {
+        font-size: 25px !important;
+    }
+
+    .dept-description {
+        font-size: 16px !important;
+    }
+
+    /* On force une ligne stable même dans la portion 769-912px, où l'ancienne */
+    /* règle @media(max-width:912px) mettait cette carte en colonne */
+    .dept-contact-card {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 15px !important;
+    }
+
+    .contact-info {
+        flex: 1 1 45% !important;
+    }
+
+    /* --- PAGE FORMATIONS (Tablette) --- */
+    .formation-card {
+        padding: 30px !important;
+    }
+
+    .formation-header h2 {
+        font-size: 24px !important;
+    }
+
+    .formation-badges {
+        flex-wrap: wrap !important;
+    }
+
+    .admissions-table-container {
+        padding: 30px !important;
+    }
+
 }
